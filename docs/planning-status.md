@@ -21,8 +21,8 @@ Tracks the architecture planning sessions. Approved results are recorded as ADRs
 | 12 | Compatibility and public API | Done | 0057–0059 |
 | 13 | Testing and quality | Done | 0060–0062 |
 | 14 | Version control, release and CI/CD | Done | 0063–0068 |
-| 15 | Space technology preparation | Next | |
-| 16 | Phased roadmap and work packages | Pending | |
+| 15 | Space technology preparation | Done | 0069–0071 |
+| 16 | Phased roadmap and work packages | Next | |
 
 ## Owner Requirements Awaiting a Decision
 

@@ -23,5 +23,6 @@ BTG Tech is an advanced technology mod for Minecraft 26.x on NeoForge by Betelge
 | [architecture/data-generation.md](architecture/data-generation.md) | Data generation pipeline, translations, loot, tags, world generation |
 | [architecture/networking.md](architecture/networking.md) | Packets, synchronization channels, security and performance checklists |
 | [architecture/compatibility.md](architecture/compatibility.md) | Mod integrations, capability interoperability and the stable data-level API |
+| [architecture/space-readiness.md](architecture/space-readiness.md) | Rules and extension points that keep v1 open for space technology |
 
 The layout of this folder is defined in [ADR 0020](decisions/0020-documentation-layout.md). Further documents are added as their planning topics are approved.

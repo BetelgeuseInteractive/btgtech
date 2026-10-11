@@ -47,4 +47,5 @@ Tiers limit throughput and capacity only (soft bottleneck). Mixing tiers never d
 
 - New energy sources: new generator blocks built on the machine framework; the network needs no changes.
 - New dimensions (space technology): networks are per level, so they work in any dimension without changes.
+- Environment factors (space technology): solar output is computed in exactly one method; a per-dimension environment factor will be applied there later (ADR 0071). v1 code never checks specific dimensions (ADR 0070).
 - Item energy (portable batteries): later, via NeoForge item energy support (ADR 0026).

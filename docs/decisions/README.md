@@ -102,3 +102,6 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0066](0066-ci-and-release-pipeline.md) | CI and release pipeline | Accepted |
 | [0067](0067-repository-files.md) | Repository files | Accepted |
 | [0068](0068-github-repository.md) | GitHub repository | Accepted |
+| [0069](0069-closed-tier-set.md) | Closed tier set | Accepted |
+| [0070](0070-dimension-agnostic-design.md) | Dimension-agnostic design | Accepted |
+| [0071](0071-space-technology-extension-points.md) | Space technology extension points | Accepted |
