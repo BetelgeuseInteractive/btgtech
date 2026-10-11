@@ -6,6 +6,7 @@ BTG Tech is an advanced technology mod for Minecraft 26.x on NeoForge by Betelge
 
 | Document | Purpose |
 |---|---|
+| [roadmap/roadmap.md](roadmap/roadmap.md) | Phases, versions, work package status and owner tasks |
 | [planning-status.md](planning-status.md) | Progress of the architecture planning sessions and owner requirements awaiting a decision |
 | [decisions/](decisions/README.md) | Architecture Decision Records: the authoritative list of approved decisions |
 | [development/environment-setup.md](development/environment-setup.md) | Preparing, verifying and using the development environment |

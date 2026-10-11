@@ -105,3 +105,4 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0069](0069-closed-tier-set.md) | Closed tier set | Accepted |
 | [0070](0070-dimension-agnostic-design.md) | Dimension-agnostic design | Accepted |
 | [0071](0071-space-technology-extension-points.md) | Space technology extension points | Accepted |
+| [0072](0072-roadmap-and-work-packages.md) | Roadmap and work packages | Accepted |

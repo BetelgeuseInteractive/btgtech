@@ -22,17 +22,11 @@ Tracks the architecture planning sessions. Approved results are recorded as ADRs
 | 13 | Testing and quality | Done | 0060–0062 |
 | 14 | Version control, release and CI/CD | Done | 0063–0068 |
 | 15 | Space technology preparation | Done | 0069–0071 |
-| 16 | Phased roadmap and work packages | Next | |
+| 16 | Phased roadmap and work packages | Done | 0072 |
 
-## Owner Requirements Awaiting a Decision
+## Open Items
 
-Stated by the owner at kickoff (2026-10-11); each is turned into an ADR in the listed topic.
-
-| Requirement | Topic |
-|---|---|
-| Acquire the domain `betelgeuseinteractive.com` before the Phase 0 bootstrap (ADR 0016) | 16 |
-| Art-style demo as a Phase 0 work package (ADR 0049) | 16 |
-| Make the repository public at the end of Phase 0 or the first alpha (ADR 0068) | 16 |
+All kickoff requirements are decided. Remaining owner tasks are tracked in [roadmap/roadmap.md §3](roadmap/roadmap.md#3-owner-tasks).
 
 ## Environment Snapshot (2026-10-11)
 
