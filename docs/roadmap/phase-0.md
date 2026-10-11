@@ -5,7 +5,7 @@ Goal: a buildable, tested, continuously integrated project skeleton and an appro
 ## WP-001 Project bootstrap
 
 - **Goal:** the official template adapted to BTG Tech; the game starts with the mod loaded.
-- **Scope:** follow [environment-setup.md §4](../development/environment-setup.md#4-project-bootstrap-phase-0); create `BTGTech` (`@Mod`) and `BTGTechClient` (`@Mod(dist = CLIENT)`) under `com.betelgeuseinteractive.btgtech` (feature bootstrap calls are added as features appear; `CoreFeature` arrives in WP-004); root files `LICENSE` (MPL-2.0 text), `LICENSE-ASSETS.md` (ARR + modpack and resource pack permissions, ADR 0013), `README.md`, `.gitignore` (MDK + IDE folders; no assistant-specific entries), `CHANGELOG.md` (Keep a Changelog, "Unreleased" section), `CONTRIBUTING.md` (ADR 0067).
+- **Scope:** follow [environment-setup.md §4](../development/environment-setup.md#4-project-bootstrap-phase-0); create `BTGTech` (`@Mod`) and `BTGTechClient` (`@Mod(dist = CLIENT)`) under `com.betelgeuseinteractive.btgtech` (feature bootstrap calls are added as features appear; `CoreFeature` arrives in WP-004); root files `LICENSE` (MPL-2.0 text), `LICENSE-ASSETS.md` (ARR + modpack and resource pack permissions, ADR 0013), `README.md`, `.gitignore` (MDK and IDE folders only), `CHANGELOG.md` (Keep a Changelog, "Unreleased" section), `CONTRIBUTING.md` (ADR 0067).
 - **Out of scope:** any content (blocks, items).
 - **Acceptance:** verification steps 1, 2 and 5 of environment-setup.md §5 succeed; BTG Tech appears in the mod list.
 - **Depends on:** owner tasks "domain" and "IntelliJ IDEA".
