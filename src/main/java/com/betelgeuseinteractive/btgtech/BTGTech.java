@@ -1,5 +1,6 @@
 package com.betelgeuseinteractive.btgtech;
 
+import com.betelgeuseinteractive.btgtech.client.BTGTechClient;
 import net.neoforged.fml.common.Mod;
 
 /**
@@ -10,4 +11,7 @@ import net.neoforged.fml.common.Mod;
 @Mod(BTGTech.MOD_ID)
 public final class BTGTech {
     public static final String MOD_ID = "btgtech";
+
+    // Deliberate violation: common code referencing a client-only class.
+    private static final Class<?> CLIENT_ENTRY_POINT = BTGTechClient.class;
 }
