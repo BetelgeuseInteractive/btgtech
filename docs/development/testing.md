@@ -35,3 +35,10 @@ How BTG Tech is tested. Decision: ADR [0060](../decisions/0060-test-strategy.md)
 
 - Every public method in a `logic` package has a unit test.
 - A bug fix comes with a test that fails without the fix, where technically feasible.
+
+## 6. Tooling
+
+- JUnit 6 with ArchUnit's `archunit-junit6` module; its compatibility with JUnit 6 was verified in WP-002, so the JUnit 5 fallback of ADR 0061 is not used.
+- Data checks parse JSON with Gson, a test-only dependency pinned to the version Minecraft ships; tests do not see the Minecraft libraries otherwise.
+- Architecture rules about packages that do not exist yet allow an empty selection, so they apply as soon as the first class arrives.
+- All versions are pinned in `gradle.properties`.

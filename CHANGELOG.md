@@ -9,3 +9,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - BTG Tech loads on Minecraft 26.1.2 with NeoForge and appears in the mod list.
+- The build checks code formatting, architecture rules and translation completeness.
