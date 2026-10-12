@@ -24,7 +24,7 @@ Every feature package (`energy`, `machine`, `storage`, `logistics`, `material`, 
    5. `StorageFeature.register(modBus)`
    6. `LogisticsFeature.register(modBus)`
    7. `ToolFeature.register(modBus)`
-2. On the physical client only, NeoForge constructs **`BTGTechClient`**, which calls the `<Feature>ClientFeature.register(modBus)` methods in the same order.
+2. On the physical client only, NeoForge constructs **`BTGTechClient`** (package `com.betelgeuseinteractive.btgtech.client`, so that it satisfies the `client` isolation rule of ADR 0018), which calls the `<Feature>ClientFeature.register(modBus)` methods in the same order.
 3. NeoForge fires `RegisterEvent`; every `DeferredRegister` registered above adds its entries.
 4. Configs load; later lifecycle events reach the listeners added in step 1 and 2.
 

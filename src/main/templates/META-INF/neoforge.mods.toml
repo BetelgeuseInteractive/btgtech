@@ -1,0 +1,31 @@
+# Mod metadata read by NeoForge. Values in ${} are filled in from gradle.properties by the generateModMetadata task.
+# Format reference: https://docs.neoforged.net/docs/gettingstarted/modfiles
+
+# The license of the mod's code; assets are licensed separately in LICENSE-ASSETS.md.
+license="${mod_license}"
+
+issueTrackerURL="https://github.com/BetelgeuseInteractive/btgtech/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+displayURL="https://github.com/BetelgeuseInteractive/btgtech"
+authors="Betelgeuse Interactive"
+description='''
+Advanced technology for Minecraft: energy generation and storage, processing and automation machines, and advanced item and fluid storage.
+'''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

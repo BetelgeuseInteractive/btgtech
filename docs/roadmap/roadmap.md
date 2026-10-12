@@ -18,7 +18,7 @@ Phases, versions and work package status. Decisions: ADR [0005](../decisions/000
 
 | WP | Title | Status |
 |---|---|---|
-| WP-001 | Project bootstrap | Pending |
+| WP-001 | Project bootstrap | Done |
 | WP-002 | Quality tooling | Pending |
 | WP-003 | Continuous integration | Pending |
 | WP-004 | Core infrastructure | Pending |
