@@ -33,7 +33,7 @@ Standards for screens, information display and in-world interaction. Decisions: 
 └─────────────────────────────────────────────────────────┘
 ```
 
-The GUI frame carries the tier accent color: Basic gray, Advanced orange (bronze), Elite cyan-blue, Ultimate purple.
+The GUI uses the vanilla panel and frame with tier-colored corner pieces in the inner corners: Basic gray, Advanced orange (bronze), Elite cyan-blue, Ultimate purple (ADR [0074](../decisions/0074-art-style.md); exact colors and shapes in the [art style guide](../development/art-style-guide.md)).
 
 ## 4. Data Synchronization in Menus
 

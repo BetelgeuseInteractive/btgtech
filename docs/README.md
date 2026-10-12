@@ -15,6 +15,7 @@ BTG Tech is an advanced technology mod for Minecraft 26.x on NeoForge by Betelge
 | [development/definition-of-done.md](development/definition-of-done.md) | Checklist that every work package must satisfy |
 | [development/git-workflow.md](development/git-workflow.md) | Branches, work package flow, versions, tags and release train |
 | [development/release-process.md](development/release-process.md) | Release channels, owner prerequisites and release steps |
+| [development/art-style-guide.md](development/art-style-guide.md) | Art style: palettes, light and shading, tier marking, materials, file naming |
 | [architecture/core.md](architecture/core.md) | Feature building blocks, startup sequence, placement rules and checklists |
 | [architecture/energy.md](architecture/energy.md) | Energy model, tiers and cable networks |
 | [architecture/logistics.md](architecture/logistics.md) | Item and fluid storage blocks and pipe networks |
