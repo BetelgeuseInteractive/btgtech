@@ -1,6 +1,6 @@
 # 0049. Art tools and style selection
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [0074](0074-art-style.md))
 - **Date:** 2026-10-11
 
 ## Context

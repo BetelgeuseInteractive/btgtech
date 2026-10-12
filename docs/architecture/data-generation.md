@@ -19,12 +19,13 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 | Datapack built-in entries provider | Configured features, placed features, biome modifiers |
 | Advancement provider | Progression advancements |
 | Tier texture provider (BTG) | Tier texture variants from base texture + tier mask (ADR 0048) |
+| Sprite source provider | Atlas sources that recolor vanilla textures at runtime for material forms (ADR 0074) |
 
 Writing PNG files from data generation was proven in WP-004 (ADR 0048): a provider reads the base texture and the tier mask from the existing resources (`event.getResourceManager(PackType.CLIENT_RESOURCES)` includes `src/main/resources`), combines them with `NativeImage` and `ARGB`, and passes the encoded bytes to `CachedOutput.writeIfNeeded`. `NativeImage` can only write to a file, so the bytes are read back from a temporary file. The output is byte-identical between runs and between Windows and Linux (CI), so the freshness check holds.
 
 ## 2. Hand-Made Resources
 
-Only: base textures and tier masks, `.mcmeta` animations, Blockbench model exports, and translation files other than `en_us` (in `src/main/resources/assets/btgtech/lang/`).
+Only: base textures and tier masks, `.mcmeta` animations, Blockbench model exports, palette strips for runtime recoloring (ADR 0074), and translation files other than `en_us` (in `src/main/resources/assets/btgtech/lang/`).
 
 ## 3. Translations
 

@@ -1,6 +1,6 @@
 # 0045. GUI layout, tier colors and information display
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [0074](0074-art-style.md))
 - **Date:** 2026-10-11
 
 ## Context
