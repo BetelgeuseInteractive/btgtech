@@ -4,7 +4,7 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 
 ## 1. Pipeline
 
-- Run: `runData` (ADR 0015). All providers are registered on `GatherDataEvent.Client` via `event.createProvider(...)`.
+- Run: `runData` (ADR 0015). All providers are registered on `GatherDataEvent.Client` via `event.createProvider(...)` in `DataGenerators`, which `BTGTechClient` registers.
 - Output: `src/generated/resources/`, committed; CI fails if regenerated output differs.
 - Code: `datagen` package, one class per provider type, organized in per-feature sections.
 
@@ -46,5 +46,5 @@ Configured and placed features for tin and lead ore, added to `#minecraft:is_ove
 
 ## 7. Creative Tab and Advancements
 
-- One "BTG Tech" creative tab; grouped by feature, ordered by tier.
+- One "BTG Tech" creative tab (`btgtech:btgtech`, title key `itemGroup.btgtech.btgtech`), defined in `core`. Each feature adds its items with a `BuildCreativeModeTabContentsEvent` listener in its bootstrap class, ordered by tier; the bootstrap order therefore groups the tab by feature. The tab is hidden while it has no items.
 - 8–10 progression advancements guide the player from the first tin ingot to Ultimate tier.
