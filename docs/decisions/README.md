@@ -78,12 +78,12 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0042](0042-multiblock-approach.md) | Multiblock approach | Accepted |
 | [0043](0043-tier-scaling-and-balance-defaults.md) | Tier scaling and balance defaults | Accepted |
 | [0044](0044-gui-technology.md) | GUI technology | Accepted (amended by 0073) |
-| [0045](0045-gui-layout-tier-colors-and-information-display.md) | GUI layout, tier colors and information display | Accepted |
+| [0045](0045-gui-layout-tier-colors-and-information-display.md) | GUI layout, tier colors and information display | Accepted (amended by 0074) |
 | [0046](0046-in-world-interaction-standards.md) | In-world interaction standards | Accepted |
 | [0047](0047-art-technical-rules.md) | Art technical rules | Accepted |
 | [0048](0048-generated-tier-texture-variants.md) | Generated tier texture variants | Accepted |
-| [0049](0049-art-tools-and-style-selection.md) | Art tools and style selection | Accepted |
-| [0050](0050-data-generation-scope-and-output-policy.md) | Data generation scope and output policy | Accepted (amended by 0060) |
+| [0049](0049-art-tools-and-style-selection.md) | Art tools and style selection | Accepted (amended by 0074) |
+| [0050](0050-data-generation-scope-and-output-policy.md) | Data generation scope and output policy | Accepted (amended by 0060, 0074) |
 | [0051](0051-languages-and-translation.md) | Languages and translation | Accepted |
 | [0052](0052-loot-and-breaking-rules.md) | Loot and breaking rules | Accepted |
 | [0053](0053-tags-world-generation-creative-tab-and-advancements.md) | Tags, world generation, creative tab and advancements | Accepted |
@@ -107,3 +107,4 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0071](0071-space-technology-extension-points.md) | Space technology extension points | Accepted |
 | [0072](0072-roadmap-and-work-packages.md) | Roadmap and work packages | Accepted |
 | [0073](0073-full-32-bit-menu-data-slots.md) | Full 32-bit menu data slots | Accepted |
+| [0074](0074-art-style.md) | Art style | Accepted |

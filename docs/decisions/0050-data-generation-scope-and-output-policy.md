@@ -1,6 +1,6 @@
 # 0050. Data generation scope and output policy
 
-- **Status:** Accepted (amended by [0060](0060-test-strategy.md))
+- **Status:** Accepted (amended by [0060](0060-test-strategy.md), [0074](0074-art-style.md))
 - **Date:** 2026-10-11
 
 ## Context
