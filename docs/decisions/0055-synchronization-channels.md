@@ -1,6 +1,6 @@
 # 0055. Synchronization channels
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [0073](0073-full-32-bit-menu-data-slots.md))
 - **Date:** 2026-10-11
 
 ## Context

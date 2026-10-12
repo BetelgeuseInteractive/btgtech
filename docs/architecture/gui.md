@@ -1,6 +1,6 @@
 # GUI and Interaction
 
-Standards for screens, information display and in-world interaction. Decisions: ADR [0044](../decisions/0044-gui-technology.md), [0045](../decisions/0045-gui-layout-tier-colors-and-information-display.md), [0046](../decisions/0046-in-world-interaction-standards.md). Visual style and art production: ADR [0047](../decisions/0047-art-technical-rules.md)–[0049](../decisions/0049-art-tools-and-style-selection.md).
+Standards for screens, information display and in-world interaction. Decisions: ADR [0044](../decisions/0044-gui-technology.md), [0045](../decisions/0045-gui-layout-tier-colors-and-information-display.md), [0046](../decisions/0046-in-world-interaction-standards.md), [0073](../decisions/0073-full-32-bit-menu-data-slots.md). Visual style and art production: ADR [0047](../decisions/0047-art-technical-rules.md)–[0049](../decisions/0049-art-tools-and-style-selection.md).
 
 ## 1. Technology
 
@@ -38,7 +38,7 @@ The GUI frame carries the tier accent color: Basic gray, Advanced orange (bronze
 ## 4. Data Synchronization in Menus
 
 - Slots synchronize item stacks.
-- `DataSlot` carries only 16 bits; 32-bit values (energy, capacities) use the `core` helper that splits a value across two `DataSlot`s.
+- A `DataSlot` carries a full 32-bit `int` under NeoForge (ADR [0073](../decisions/0073-full-32-bit-menu-data-slots.md)); energy amounts and capacities use one `DataSlot` each.
 - Non-numeric data (fluid type) uses a dedicated packet sent only on change (planning topic 11).
 
 ## 5. Information Display
