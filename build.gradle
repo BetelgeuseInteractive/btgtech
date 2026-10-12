@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'net.neoforged.moddev' version '2.0.148'
+    id 'com.diffplug.spotless' version '8.10.4'
     id 'idea'
 }
 
@@ -24,6 +25,11 @@ sourceSets.main.resources {
     // Exclude common development only resources from finalized outputs
     exclude("**/*.bbmodel") // BlockBench project files
     exclude("src/generated/**/.cache") // datagen cache files
+}
+
+repositories {
+    // Formatter and test libraries.
+    mavenCentral()
 }
 
 base {
@@ -88,6 +94,18 @@ neoForge {
     }
 }
 
+dependencies {
+    testImplementation platform("org.junit:junit-bom:${junit_version}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation "com.tngtech.archunit:archunit-junit6:${archunit_version}"
+    testImplementation "com.google.code.gson:gson:${gson_version}"
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
@@ -114,6 +132,13 @@ neoForge.ideSyncTask generateModMetadata
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+// "check" (and therefore "build") fails on unformatted Java code; "spotlessApply" fixes it.
+spotless {
+    java {
+        palantirJavaFormat(palantir_java_format_version)
+    }
 }
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
