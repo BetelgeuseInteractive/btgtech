@@ -1,5 +1,7 @@
 package com.betelgeuseinteractive.btgtech;
 
+import com.betelgeuseinteractive.btgtech.core.CoreFeature;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
 /**
@@ -10,4 +12,8 @@ import net.neoforged.fml.common.Mod;
 @Mod(BTGTech.MOD_ID)
 public final class BTGTech {
     public static final String MOD_ID = "btgtech";
+
+    public BTGTech(IEventBus modBus) {
+        CoreFeature.register(modBus);
+    }
 }

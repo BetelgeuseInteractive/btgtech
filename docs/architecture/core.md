@@ -17,14 +17,14 @@ Every feature package (`energy`, `machine`, `storage`, `logistics`, `material`, 
 ## 2. Startup Sequence
 
 1. NeoForge constructs **`BTGTech`** on both sides. Its constructor calls, in this order:
-   1. `CoreFeature.register(modBus, modContainer)`: configuration registration and shared infrastructure.
+   1. `CoreFeature.register(modBus)`: shared infrastructure (the creative tab). Configuration registration joins it with the first config value (`SERVER`: WP-105), adding the `ModContainer` parameter.
    2. `MaterialFeature.register(modBus)`
    3. `EnergyFeature.register(modBus)`
    4. `MachineFeature.register(modBus)`
    5. `StorageFeature.register(modBus)`
    6. `LogisticsFeature.register(modBus)`
    7. `ToolFeature.register(modBus)`
-2. On the physical client only, NeoForge constructs **`BTGTechClient`** (package `com.betelgeuseinteractive.btgtech.client`, so that it satisfies the `client` isolation rule of ADR 0018), which calls the `<Feature>ClientFeature.register(modBus)` methods in the same order.
+2. On the physical client only, NeoForge constructs **`BTGTechClient`** (package `com.betelgeuseinteractive.btgtech.client`, so that it satisfies the `client` isolation rule of ADR 0018), which calls the `<Feature>ClientFeature.register(modBus)` methods in the same order. It also calls `DataGenerators.register(modBus)` (package `datagen`), because the data providers run only in the client data run (ADR 0050).
 3. NeoForge fires `RegisterEvent`; every `DeferredRegister` registered above adds its entries.
 4. Configs load; later lifecycle events reach the listeners added in step 1 and 2.
 
@@ -34,7 +34,7 @@ Registries must never be queried before registration has finished.
 
 | Package | Content | Decision |
 |---|---|---|
-| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`), configuration registration, `CoreFeature` | ADR 0023, 0025, 0033 |
+| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`), configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), `CoreFeature` | ADR 0023, 0025, 0033, 0053 |
 | `core.network` | Transport networks: per-level manager, tick hook, endpoint capability caches | ADR 0031 |
 | `core.network.logic` | Generic network graph (nodes, merge/split, membership) | ADR 0031 |
 | `core.packet` | Packet protocol version and shared codec helpers | ADR 0054 |
