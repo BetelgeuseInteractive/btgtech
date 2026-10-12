@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a problem with BTG Tech.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for reporting a problem. Please fill in every required field so the bug can be reproduced.
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Minecraft version
+      placeholder: "26.1.2"
+    validations:
+      required: true
+  - type: input
+    id: neoforge-version
+    attributes:
+      label: NeoForge version
+      placeholder: "26.1.2.116"
+    validations:
+      required: true
+  - type: input
+    id: mod-version
+    attributes:
+      label: BTG Tech version
+      placeholder: "0.1.0+mc26.1.2"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log file
+      description: Attach `logs/latest.log` from your game folder (and the file from `crash-reports/` if the game crashed), or paste a link to it.
+    validations:
+      required: true
