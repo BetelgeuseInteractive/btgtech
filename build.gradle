@@ -94,6 +94,17 @@ neoForge {
     }
 }
 
+dependencies {
+    testImplementation platform("org.junit:junit-bom:${junit_version}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation "com.tngtech.archunit:archunit-junit6:${archunit_version}"
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
 // This block of code expands all declared replace properties in the specified resource targets.
 // A missing property will result in an error. Properties are expanded using ${} Groovy notation.
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
