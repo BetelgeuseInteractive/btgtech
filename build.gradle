@@ -99,6 +99,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testImplementation "com.tngtech.archunit:archunit-junit6:${archunit_version}"
+    testImplementation "com.google.code.gson:gson:${gson_version}"
 }
 
 tasks.named('test', Test) {
