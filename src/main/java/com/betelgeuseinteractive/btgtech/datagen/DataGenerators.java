@@ -1,5 +1,6 @@
 package com.betelgeuseinteractive.btgtech.datagen;
 
+import net.minecraft.server.packs.PackType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -13,5 +14,7 @@ public final class DataGenerators {
 
     private static void gatherClientData(GatherDataEvent.Client event) {
         event.createProvider(EnglishLanguageProvider::new);
+        event.createProvider(
+                output -> new PngProofProvider(output, event.getResourceManager(PackType.CLIENT_RESOURCES)));
     }
 }
