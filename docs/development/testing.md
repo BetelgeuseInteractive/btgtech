@@ -42,3 +42,11 @@ How BTG Tech is tested. Decision: ADR [0060](../decisions/0060-test-strategy.md)
 - Data checks parse JSON with Gson, a test-only dependency pinned to the version Minecraft ships; tests do not see the Minecraft libraries otherwise.
 - Architecture rules about packages that do not exist yet allow an empty selection, so they apply as soon as the first class arrives.
 - All versions are pinned in `gradle.properties`.
+
+## 7. Continuous Integration
+
+`.github/workflows/ci.yml` runs on every push and pull request (ADR 0066): `build`, then `runData` followed by a check that `src/generated` matches the committed output, then `runGameTestServer`.
+
+- The game test server needs no Minecraft EULA acceptance (verified in WP-003).
+- Minecraft's built-in `minecraft:always_pass` test runs with the mod's game tests, so the step passes before the mod has its own tests.
+- `setup-gradle` caches Gradle and validates the wrapper jar against the checksums published by Gradle.
