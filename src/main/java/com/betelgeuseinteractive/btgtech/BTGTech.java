@@ -9,5 +9,5 @@ import net.neoforged.fml.common.Mod;
  */
 @Mod(BTGTech.MOD_ID)
 public final class BTGTech {
-    public static final String MOD_ID = "btgtech";
+    public static final String MOD_ID="btgtech" ;
 }
