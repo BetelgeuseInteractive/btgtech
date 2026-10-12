@@ -77,7 +77,7 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0041](0041-generators-push-energy-to-neighbors.md) | Generators push energy to neighbors | Accepted |
 | [0042](0042-multiblock-approach.md) | Multiblock approach | Accepted |
 | [0043](0043-tier-scaling-and-balance-defaults.md) | Tier scaling and balance defaults | Accepted |
-| [0044](0044-gui-technology.md) | GUI technology | Accepted |
+| [0044](0044-gui-technology.md) | GUI technology | Accepted (amended by 0073) |
 | [0045](0045-gui-layout-tier-colors-and-information-display.md) | GUI layout, tier colors and information display | Accepted |
 | [0046](0046-in-world-interaction-standards.md) | In-world interaction standards | Accepted |
 | [0047](0047-art-technical-rules.md) | Art technical rules | Accepted |
@@ -88,7 +88,7 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0052](0052-loot-and-breaking-rules.md) | Loot and breaking rules | Accepted |
 | [0053](0053-tags-world-generation-creative-tab-and-advancements.md) | Tags, world generation, creative tab and advancements | Accepted |
 | [0054](0054-packet-architecture.md) | Packet architecture | Accepted |
-| [0055](0055-synchronization-channels.md) | Synchronization channels | Accepted |
+| [0055](0055-synchronization-channels.md) | Synchronization channels | Accepted (amended by 0073) |
 | [0056](0056-network-security-and-performance-rules.md) | Network security and performance rules | Accepted |
 | [0057](0057-v1-mod-integrations.md) | v1 mod integrations | Accepted |
 | [0058](0058-integration-technical-rules.md) | Integration technical rules | Accepted |
@@ -106,3 +106,4 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0070](0070-dimension-agnostic-design.md) | Dimension-agnostic design | Accepted |
 | [0071](0071-space-technology-extension-points.md) | Space technology extension points | Accepted |
 | [0072](0072-roadmap-and-work-packages.md) | Roadmap and work packages | Accepted |
+| [0073](0073-full-32-bit-menu-data-slots.md) | Full 32-bit menu data slots | Accepted |

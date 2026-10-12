@@ -37,10 +37,10 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 ## WP-105 Energy slice
 
 - **Goal:** energy produced, stored and transported.
-- **Scope:** `solid_fuel_generator`, `battery`, `energy_cable`, each in four tiers; cable energy distribution strategy (`energy.logic`); batteries passive; balance values from the `SERVER` config.
-- **Acceptance:** unit tests for the distribution algorithm; game tests: generator charges a battery through a cable; tier throughput limit holds.
+- **Scope:** `solid_fuel_generator`, `battery`, `energy_cable`, each in four tiers; cable energy distribution strategy (`energy.logic`); batteries passive; balance values from the `SERVER` config, which `CoreFeature` registers from this work package on (ADR 0025).
+- **Acceptance:** unit tests for the distribution algorithm; game tests: generator charges a battery through a cable; tier throughput limit holds; `runClient`: a GUI shows an energy value above 32,767 correctly (ADR 0073).
 - **Depends on:** WP-101, WP-102, WP-104.
-- **References:** ADR 0026, 0027, 0028, 0043, [balance.md](../architecture/balance.md).
+- **References:** ADR 0025, 0026, 0027, 0028, 0043, 0073, [balance.md](../architecture/balance.md).
 
 ## WP-106 Crusher and recipe base
 

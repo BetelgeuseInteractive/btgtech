@@ -30,10 +30,11 @@ Goal: a buildable, tested, continuously integrated project skeleton and an appro
 ## WP-004 Core infrastructure
 
 - **Goal:** shared infrastructure every feature needs.
-- **Scope:** `Tier` (`basic`, `advanced`, `elite`, `ultimate`); `SERVER` and `CLIENT` config registration; `core.packet` protocol version and the 32-bit `DataSlot` split helper; the "BTG Tech" creative tab; data generation wiring (`GatherDataEvent.Client`, language provider); a proof that data generation can write PNG files (ADR 0048), reported in the PR.
-- **Acceptance:** unit tests for the `DataSlot` helper; `runData` produces output; PNG proof result documented.
+- **Scope:** `Tier` (`basic`, `advanced`, `elite`, `ultimate`); `core.packet` protocol version; the "BTG Tech" creative tab; data generation wiring (`GatherDataEvent.Client`, language provider); a proof that data generation can write PNG files (ADR 0048), reported in the PR.
+- **Acceptance:** `runData` produces output; PNG proof result documented.
+- **Changed on 2026-10-12 (owner approval):** the 32-bit `DataSlot` split helper was dropped because NeoForge synchronizes full 32-bit values (ADR 0073); config registration moved to the first config value (`SERVER`: WP-105; `CLIENT`: with the first approved client preference), because NeoForge ignores empty config specs.
 - **Depends on:** WP-001.
-- **References:** ADR 0025, 0033, 0044, 0048, 0050, 0054.
+- **References:** ADR 0025, 0033, 0044, 0048, 0050, 0054, 0073.
 
 ## WP-005 Art style demo
 

@@ -1,6 +1,6 @@
 # Networking and Synchronization
 
-How client and server exchange data. Decisions: ADR [0054](../decisions/0054-packet-architecture.md), [0055](../decisions/0055-synchronization-channels.md), [0056](../decisions/0056-network-security-and-performance-rules.md); state ownership: ADR [0024](../decisions/0024-data-and-state-ownership.md).
+How client and server exchange data. Decisions: ADR [0054](../decisions/0054-packet-architecture.md), [0055](../decisions/0055-synchronization-channels.md), [0056](../decisions/0056-network-security-and-performance-rules.md), [0073](../decisions/0073-full-32-bit-menu-data-slots.md); state ownership: ADR [0024](../decisions/0024-data-and-state-ownership.md).
 
 ## 1. Principles
 
@@ -12,7 +12,7 @@ How client and server exchange data. Decisions: ADR [0054](../decisions/0054-pac
 
 | Element | Location |
 |---|---|
-| Protocol version constant, shared codec helpers (bounded collections, split 32-bit values) | `core.packet` |
+| Protocol version constant, shared codec helpers (e.g. bounded collections) | `core.packet` |
 | Payload records (`CustomPacketPayload` + `StreamCodec`) | `<feature>.packet` |
 | Clientbound handlers | `<feature>.client` |
 | Registration | `<Feature>Feature` (common) and `<Feature>ClientFeature` (client handlers) |
@@ -23,7 +23,7 @@ Handlers run on the main thread. Increment the protocol version whenever any pay
 
 | Data | Channel | Frequency |
 |---|---|---|
-| GUI numbers | Menu `DataSlot`s (32-bit split helper) | Vanilla, on change |
+| GUI numbers | Menu `DataSlot`s (full 32-bit values, ADR 0073) | Vanilla, on change |
 | GUI non-numeric data | BTG clientbound payload | On change, menu viewers only |
 | World visual state | Block state | Vanilla |
 | Block-entity render data | Block entity update packet | On visible change, ≤ 1 per block per 10 ticks |
