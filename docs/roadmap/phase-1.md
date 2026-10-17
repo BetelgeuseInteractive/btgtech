@@ -13,10 +13,19 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 ## WP-102 Machine framework
 
 - **Goal:** everything machine-like blocks share.
-- **Scope:** `MachineBlockEntity`, machine definitions, components (BTG energy storage class, item slots, processing progress, redstone control, face state), facing, slot roles, idle sleep, the menu base and the widget set (energy bar, progress arrow, redstone button, tooltip helpers) with the standard layout.
+- **Scope:** `MachineBlockEntity`, machine definitions, components (BTG energy storage class, item slots, processing progress, redstone control, face state), facing, slot roles, idle sleep, capability exposure and the menu base with its synchronization.
 - **Acceptance:** unit tests for component logic where Minecraft-independent; verified through WP-105/106 game tests.
 - **Depends on:** WP-004.
 - **References:** ADR 0032, 0034, 0035, 0044, 0045, [machines.md](../architecture/machines.md), [gui.md](../architecture/gui.md).
+- **Changed on 2026-10-17 (owner approval):** the screen and widget set moved to WP-109, so that each part fits one reviewable pull request.
+
+## WP-109 Machine screen and widgets
+
+- **Goal:** the shared machine screen.
+- **Scope:** the screen base with the standard layout; the widget set (energy bar, progress arrow, redstone mode button, tooltip helpers with SI formatting); GUI sprites drawn per the art style guide and reviewed by the owner.
+- **Acceptance:** unit tests for Minecraft-independent formatting logic; checked visually with the first machine GUI in WP-105.
+- **Depends on:** WP-102.
+- **References:** ADR 0044, 0045, 0074, [gui.md](../architecture/gui.md), [art style guide](../development/art-style-guide.md).
 
 ## WP-103 Wrench
 
@@ -39,7 +48,7 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Goal:** energy produced, stored and transported.
 - **Scope:** `solid_fuel_generator`, `battery`, `energy_cable`, each in four tiers; cable energy distribution strategy (`energy.logic`); batteries passive; balance values from the `SERVER` config, which `CoreFeature` registers from this work package on (ADR 0025).
 - **Acceptance:** unit tests for the distribution algorithm; game tests: generator charges a battery through a cable; tier throughput limit holds; `runClient`: a GUI shows an energy value above 32,767 correctly (ADR 0073).
-- **Depends on:** WP-101, WP-102, WP-104.
+- **Depends on:** WP-101, WP-102, WP-104, WP-109.
 - **References:** ADR 0025, 0026, 0027, 0028, 0043, 0073, [balance.md](../architecture/balance.md).
 
 ## WP-106 Crusher and recipe base
@@ -63,5 +72,5 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Goal:** release the vertical slice.
 - **Scope:** fill game-test gaps; all slice keys in eight languages; `CHANGELOG.md`; release `0.1.0+mc26.1.2` as a GitHub pre-release; record architecture findings (and propose ADRs where a decision must change).
 - **Acceptance:** release workflow publishes the pre-release; the owner approves.
-- **Depends on:** WP-101 … WP-107.
+- **Depends on:** WP-101 … WP-107, WP-109.
 - **References:** ADR 0051, 0064, 0066.
