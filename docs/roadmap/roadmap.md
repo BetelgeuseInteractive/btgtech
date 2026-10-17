@@ -25,7 +25,7 @@ Phases, versions and work package status. Decisions: ADR [0005](../decisions/000
 | WP-005 | Art style demo | Done |
 | WP-101 | Network infrastructure | Done |
 | WP-102 | Machine framework | Done |
-| WP-109 | Machine screen and widgets | Pending |
+| WP-109 | Machine screen and widgets | In progress |
 | WP-103 | Wrench | Pending |
 | WP-104 | Materials part 1 | Pending |
 | WP-105 | Energy slice | Pending |
