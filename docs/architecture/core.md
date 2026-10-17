@@ -35,8 +35,8 @@ Registries must never be queried before registration has finished.
 | Package | Content | Decision |
 |---|---|---|
 | `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`), configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), `CoreFeature` | ADR 0023, 0025, 0033, 0053 |
-| `core.network` | Transport networks: per-level manager, tick hook, endpoint capability caches | ADR 0031 |
-| `core.network.logic` | Generic network graph (nodes, merge/split, membership) | ADR 0031 |
+| `core.network` | Transport networks: per-level manager (`TransportNetworkManager`), tick and chunk hooks (`TransportNetworks`), endpoint capability caches; extension points `TransportNetworkType` and `TransportNodeBlock` | ADR 0031 |
+| `core.network.logic` | Generic network graph (`NetworkGraph`, `Network`: nodes, merge/split, membership) | ADR 0031 |
 | `core.packet` | Packet protocol version and shared codec helpers | ADR 0054 |
 | `core.machine` | Machine framework: `MachineBlockEntity`, machine definitions, components, BTG energy storage class | ADR 0032, 0034 |
 
@@ -66,3 +66,8 @@ Block entity → block state; data components → item-stack state; data attachm
 1. Requires an approved ADR (ADR 0018).
 2. Create `<Feature>Feature` and add its call to `BTGTech` at the correct position in the startup order; update section 2 of this document.
 3. Create `<Feature>ClientFeature` only if the feature has client code, and add its call to `BTGTechClient`.
+
+**Adding a transport network (cables, pipes)**
+1. Implement `TransportNetworkType<C>` in the owning feature: the endpoint capability and the transfer strategy, called once per network per server tick. Endpoints whose `handler()` is `null` are unloaded or do not expose the capability and are skipped. Use one type object per tier, so that tiers never connect (ADR 0028, 0030).
+2. Let the node block implement `TransportNodeBlock` (network type, node sides and endpoint sides, all read from the block state) and call `TransportNetworks.refresh(level, pos)` on the server whenever the block is placed, removed or changes state.
+3. Two nodes connect only when both connect toward each other and share the same type. Networks are rebuilt from block states as chunks load, so nothing is saved.
