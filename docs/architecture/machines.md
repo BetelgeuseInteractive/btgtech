@@ -6,10 +6,19 @@ Design of all machine-like blocks: processing machines, generators, batteries, i
 
 | Element | Responsibility |
 |---|---|
-| `MachineBlockEntity` (abstract) | Common lifecycle: ticking, saving/loading, synchronization requests, face state, redstone mode. Subclass depth at most two levels |
-| Machine definition | Data object per machine: slot layout, tanks, energy use, recipe type, components used. Tier values are read from the `SERVER` config |
-| Components | Energy (BTG storage class derived from `SimpleEnergyHandler`), item slots, fluid tanks, processing progress, redstone control |
-| Recipe base | Shared recipe classes and codecs for all BTG recipe types |
+| `MachineBlock` (abstract) | One block per tier; `facing` and `active` properties, front towards the player on placement, right-click opens the GUI if the block entity is a `MenuProvider`, server ticker (`ticksOnServer()` is `false` for passive blocks) |
+| `MachineBlockEntity` (abstract) | Common lifecycle: ticking, saving/loading, face states, redstone mode, processing progress, delayed active state, spilling slots on removal. Tier and definition come from the block, so one block entity type serves all four tiers. Subclass depth at most two levels |
+| `MachineDefinition` | Data object per machine: slot layout and the components used; tanks, energy use and recipe type are added with the work packages that need them. Tier values are functions, read when the block entity is created (`SERVER` config, ADR 0025) |
+| Components | `MachineEnergyStorage` (derived from `SimpleEnergyHandler`), `MachineItemSlots` (inputs, then outputs), `FaceStates`, and in `core.machine.logic` `ProcessingProgress`, `RedstoneMode`, `ActiveState`; fluid tanks follow in WP-201 |
+| `MachineMenu` (abstract) | Machine slots, standard player inventory, shift-click, redstone mode button, data slots for energy, capacity, progress, duration and redstone mode |
+| `MachineCapabilities` | Registers the face-aware energy and item handlers of a machine block entity type |
+| Recipe base | Shared recipe classes and codecs for all BTG recipe types (WP-106) |
+
+Rules for machine code:
+- The block itself produces and uses energy with `generate` and `consume`, which ignore the transfer limits; other blocks go through the energy handler and its tier limits.
+- Other blocks see the item slots through the sided view: insertion into inputs only, extraction from outputs only.
+- A processing machine calls `consumeInputChange()` before looking up a recipe and stays idle while it returns `false` (idle sleep).
+- Visible activity goes through `setActive`, which keeps the `active` state for at least 20 ticks (ADR 0047).
 
 A machine gets its own subclass only for behavior components cannot express (e.g. generators). Machine-specific logic stays in the owning feature (`energy`, `machine`, `storage`).
 
