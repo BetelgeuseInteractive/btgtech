@@ -62,6 +62,12 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 
 - Vanilla panel and frame: panel `#C6C6C6`, 2-px bevels `#FFFFFF` (top left) and `#555555` (bottom right), 1-px `#000000` outline with rounded corners.
 - Tier corner pieces in the four inner corners: L-shapes with 8-px arms, 2 px thick, starting 3 px in from the outer edge. Outer row and column in the mid tone, the corner pixels in the light tone, the inner row and column in the dark tone.
+- The panel is one base texture with the corner pieces in the Basic ramp and a tier mask, like block textures (section 4); its four corners mirror each other.
+- Slots use the vanilla slot sprite; buttons use the vanilla button sprites (referenced, never copied).
+- Gauges sit in a recess like a slot: `#373737` top and left edge, `#FFFFFF` bottom and right edge, `#8B8B8B` inside.
+- Energy fill in redstone red, light from the left (`#5A0808` `#7A0E0E` `#A51616` `#D42020` `#E8453A` `#FF7A66`), with one darker row every 4 px counted from the bottom.
+- Progress arrow: empty in `#8B8B8B`, filled in `#FFFFFF`, symmetric about its middle row.
+- Icons (10 × 10 px) are drawn in the colors of what they show and stay readable on the vanilla button: redstone dust for "ignore", a lit and an unlit redstone torch for the two signal modes.
 - Layout and widgets: [gui.md](../architecture/gui.md).
 
 ## 8. File Naming
@@ -72,7 +78,10 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 | Tier mask | `assets/btgtech/textures/block/<block>_<face>_tier_mask.png` |
 | Generated tier texture | `assets/btgtech/textures/block/<tier>_<block>_<face>.png` (in `src/generated/resources`) |
 | Item texture | `assets/btgtech/textures/item/<item>.png` |
+| GUI sprite | `assets/btgtech/textures/gui/sprites/machine/<sprite>.png`, sprite ID `btgtech:machine/<sprite>` |
+| GUI base texture and tier mask | `assets/btgtech/textures/gui/sprites/machine/<sprite>.png` and `<sprite>_tier_mask.png` |
+| Generated GUI tier sprite | `assets/btgtech/textures/gui/sprites/machine/<tier>_<sprite>.png` (in `src/generated/resources`) |
 | Palette strips | `assets/btgtech/textures/palettes/<vanilla texture>_key.png` and `<vanilla texture>_<material>.png` |
-| Art sources | `art/block/<block>.aseprite`, `art/item/<item>.aseprite`, `art/model/<model>.bbmodel` (ADR 0019) |
+| Art sources | `art/block/<block>.aseprite`, `art/item/<item>.aseprite`, `art/gui/machine/<sprite>.aseprite`, `art/model/<model>.bbmodel` (ADR 0019) |
 
 All names are lowercase snake_case and use the registry IDs of ADR 0039.

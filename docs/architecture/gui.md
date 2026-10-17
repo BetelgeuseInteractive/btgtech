@@ -10,14 +10,17 @@ Standards for screens, information display and in-world interaction. Decisions: 
 
 ## 2. Widget Set (`core.machine.client`)
 
-| Widget | Purpose |
-|---|---|
-| Energy bar | Stored / capacity, tooltip with exact values |
-| Fluid gauge | Fluid type, amount / capacity |
-| Progress arrow | Processing progress |
-| Redstone mode button | Cycles ignore / with signal / without signal |
-| Machine mode button | Machine-specific modes (e.g. `fluid_processor` fill/drain) |
-| Tooltip helpers | Short line + `Shift` details; SI formatting |
+| Widget | Class | Purpose |
+|---|---|---|
+| Screen base | `MachineScreen` | Tier panel, slot frames, energy bar, redstone mode button, title (section 3) |
+| Energy bar | `EnergyBar` | Stored / capacity, filled from the bottom; tooltip with SI amounts, exact values with `Shift` |
+| Fluid gauge | (WP-201) | Fluid type, amount / capacity |
+| Progress arrow | `ProgressArrow` | Processing progress, filled from left to right |
+| Redstone mode button | `RedstoneModeButton` | Vanilla button with the mode icon; cycles ignore / with signal / without signal through the menu button of `MachineMenu`; tooltip and narration name the mode |
+| Machine mode button | (with `fluid_processor`) | Machine-specific modes (e.g. `fluid_processor` fill/drain) |
+| Tooltip helpers | `MachineTooltips` | Short line + `Shift` details; SI formatting |
+
+Minecraft-independent parts live in `core.machine.logic` and are unit-tested: `QuantityFormat` (SI and exact amounts) and `GaugeScale` (filled length of a gauge). Translation keys are constants in `MachineTranslationKeys`, shared with the language provider.
 
 ## 3. Screen Layout
 
@@ -35,6 +38,20 @@ Standards for screens, information display and in-world interaction. Decisions: 
 
 The GUI uses the vanilla panel and frame with tier-colored corner pieces in the inner corners: Basic gray, Advanced orange (bronze), Elite cyan-blue, Ultimate purple (ADR [0074](../decisions/0074-art-style.md); exact colors and shapes in the [art style guide](../development/art-style-guide.md)).
 
+Positions in pixels from the top left corner of the 176 × 166 panel:
+
+| Element | Position | Size |
+|---|---|---|
+| Title | centered at y 6; moved left when it would reach the redstone mode button, shortened with an ellipsis only if it does not fit between x 8 and 150 | |
+| Redstone mode button | 152, 6 | 16 × 16 |
+| Energy bar (frame) | 7, 16 | 14 × 54 |
+| Player inventory label | 8, 72 | |
+| Player inventory and hotbar slots | 8, 84 and 8, 142 (vanilla positions) | |
+
+- Machine slots and gauges keep clear of the energy bar (x 7–20, on machines with energy), the redstone mode button (x 152–167, y 6–21) and the tier corner pieces (the 11 × 11 px in each corner).
+- `MachineScreen` draws the vanilla slot sprite (`minecraft:container/slot`) behind every slot of the menu, so the panel itself carries no slots and serves every machine.
+- The panels are the tier variants `btgtech:machine/<tier>_panel`, generated from one base texture and a tier mask (ADR [0048](../decisions/0048-generated-tier-texture-variants.md)).
+
 ## 4. Data Synchronization in Menus
 
 - Slots synchronize item stacks.
@@ -44,7 +61,9 @@ The GUI uses the vanilla panel and frame with tier-colored corner pieces in the 
 ## 5. Information Display
 
 - Energy: FE with SI prefixes (`1.2 kFE`, `3.4 MFE`); fluids: mB or buckets.
-- Tooltips: one short line; `Shift` shows tier values, usage and capacity.
+- SI amounts keep one decimal digit and are rounded down, so a value just below a limit never shows the limit (`999,999` → `999.9 kFE`); amounts below 1,000 have no prefix and no decimal digit. Exact amounts group thousands with commas (`12,345 FE`).
+- Like vanilla, numbers use the same separators in every language; the unit and its position come from the translation (`gui.btgtech.energy`, `.kilo`, `.mega`, `.giga`).
+- Tooltips: one short line; `Shift` shows tier values, usage and capacity. Without `Shift`, a dark gray hint line says that details exist.
 - All text through translation keys.
 
 ## 6. In-World Interaction
