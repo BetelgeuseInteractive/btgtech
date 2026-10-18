@@ -12,13 +12,16 @@ import java.nio.file.Path;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Tier texture variants (ADR 0048). Each listed base texture is drawn with the Basic tier tones; its tier mask is white
@@ -31,7 +34,12 @@ final class TierTextureProvider implements DataProvider {
             new BaseTexture("gui/sprites/machine/panel", EnumSet.allOf(Tier.class)),
             // Crafting components; the other tiers follow with their components in WP-301
             new BaseTexture("block/machine_casing", EnumSet.of(Tier.BASIC)),
-            new BaseTexture("item/circuit", EnumSet.of(Tier.BASIC)));
+            new BaseTexture("item/circuit", EnumSet.of(Tier.BASIC)),
+            // Energy
+            new BaseTexture("block/battery_front", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/battery_front_active", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/battery_side", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/battery_top", EnumSet.allOf(Tier.class)));
 
     private static final int MASK_OFF = 0x000000;
     private static final int MASK_ON = 0xFFFFFF;
@@ -67,12 +75,30 @@ final class TierTextureProvider implements DataProvider {
             if (base.getWidth() != mask.getWidth() || base.getHeight() != mask.getHeight()) {
                 throw new IllegalArgumentException("The tier mask of " + baseTexture + " differs in size");
             }
+            byte[] metadata = metadata(baseTexture);
             for (Tier tier : tiers) {
+                Path target = target(baseTexture, tier);
                 try (NativeImage variant = recolor(baseTexture, base, mask, tier)) {
                     byte[] png = encode(variant);
-                    cache.writeIfNeeded(target(baseTexture, tier), png, sha1(png));
+                    cache.writeIfNeeded(target, png, sha1(png));
+                }
+                if (metadata != null) {
+                    cache.writeIfNeeded(
+                            target.resolveSibling(target.getFileName() + ".mcmeta"), metadata, sha1(metadata));
                 }
             }
+        }
+    }
+
+    // The hand-made metadata of the base texture (an animation), which every variant needs as well.
+    private byte @Nullable [] metadata(String baseTexture) throws IOException {
+        Optional<Resource> resource =
+                resources.getResource(location(baseTexture).withSuffix(".mcmeta"));
+        if (resource.isEmpty()) {
+            return null;
+        }
+        try (InputStream stream = resource.get().open()) {
+            return stream.readAllBytes();
         }
     }
 

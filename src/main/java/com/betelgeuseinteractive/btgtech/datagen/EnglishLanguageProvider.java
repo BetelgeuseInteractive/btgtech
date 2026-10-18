@@ -4,9 +4,12 @@ import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.CoreBlocks;
 import com.betelgeuseinteractive.btgtech.core.CoreCreativeModeTabs;
 import com.betelgeuseinteractive.btgtech.core.CoreItems;
+import com.betelgeuseinteractive.btgtech.core.Tier;
 import com.betelgeuseinteractive.btgtech.core.machine.MachineTranslationKeys;
 import com.betelgeuseinteractive.btgtech.core.machine.logic.RedstoneMode;
 import com.betelgeuseinteractive.btgtech.core.machine.logic.SiPrefix;
+import com.betelgeuseinteractive.btgtech.energy.BatteryItem;
+import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialItems;
 import net.minecraft.data.PackOutput;
@@ -22,6 +25,7 @@ final class EnglishLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         addCore();
         addMaterials();
+        addEnergy();
     }
 
     private void addCore() {
@@ -56,5 +60,13 @@ final class EnglishLanguageProvider extends LanguageProvider {
         addItem(MaterialItems.BRONZE_DUST, "Bronze Dust");
         addItem(MaterialItems.BRONZE_PLATE, "Bronze Plate");
         addBlock(MaterialBlocks.BRONZE_BLOCK, "Block of Bronze");
+    }
+
+    private void addEnergy() {
+        addBlock(EnergyBlocks.BATTERIES.get(Tier.BASIC), "Basic Battery");
+        addBlock(EnergyBlocks.BATTERIES.get(Tier.ADVANCED), "Advanced Battery");
+        addBlock(EnergyBlocks.BATTERIES.get(Tier.ELITE), "Elite Battery");
+        addBlock(EnergyBlocks.BATTERIES.get(Tier.ULTIMATE), "Ultimate Battery");
+        add(BatteryItem.LOSES_ENERGY, "Loses its stored energy when broken");
     }
 }

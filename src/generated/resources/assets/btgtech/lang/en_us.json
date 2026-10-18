@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "Advanced Battery",
+  "block.btgtech.basic_battery": "Basic Battery",
   "block.btgtech.basic_machine_casing": "Basic Machine Casing",
   "block.btgtech.bronze_block": "Block of Bronze",
   "block.btgtech.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.btgtech.elite_battery": "Elite Battery",
   "block.btgtech.raw_tin_block": "Block of Raw Tin",
   "block.btgtech.tin_block": "Block of Tin",
   "block.btgtech.tin_ore": "Tin Ore",
+  "block.btgtech.ultimate_battery": "Ultimate Battery",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "Tin Nugget",
   "item.btgtech.tin_plate": "Tin Plate",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "Loses its stored energy when broken",
   "tooltip.btgtech.hold_shift": "Hold Shift for details"
 }

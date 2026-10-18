@@ -2,6 +2,8 @@ package com.betelgeuseinteractive.btgtech.datagen;
 
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.CoreItems;
+import com.betelgeuseinteractive.btgtech.core.Tier;
+import com.betelgeuseinteractive.btgtech.energy.EnergyItems;
 import com.betelgeuseinteractive.btgtech.material.MaterialItems;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
@@ -33,6 +35,7 @@ final class RecipeDefinitionProvider extends RecipeProvider {
     protected void buildRecipes() {
         addCore();
         addMaterials();
+        addEnergy();
     }
 
     private void addCore() {
@@ -88,6 +91,20 @@ final class RecipeDefinitionProvider extends RecipeProvider {
                 MaterialTags.BRONZE_NUGGETS,
                 MaterialTags.BRONZE_STORAGE_BLOCKS);
         cooking(MaterialItems.BRONZE_INGOT.get(), MaterialTags.BRONZE_DUSTS, "dust", 0.0F);
+    }
+
+    private void addEnergy() {
+        // Basic only; the higher tiers follow with the tier upgrade recipes of WP-301.
+        shaped(RecipeCategory.REDSTONE, EnergyItems.BATTERIES.get(Tier.BASIC).get())
+                .define('R', Tags.Items.DUSTS_REDSTONE)
+                .define('C', Tags.Items.INGOTS_COPPER)
+                .define('M', CoreItems.BASIC_MACHINE_CASING.get())
+                .define('K', CoreItems.BASIC_CIRCUIT.get())
+                .pattern("RCR")
+                .pattern("CMC")
+                .pattern("RKR")
+                .unlockedBy("has_basic_machine_casing", has(CoreItems.BASIC_MACHINE_CASING.get()))
+                .save(output);
     }
 
     /** Ingot to nuggets and back, ingots to a storage block and back. */

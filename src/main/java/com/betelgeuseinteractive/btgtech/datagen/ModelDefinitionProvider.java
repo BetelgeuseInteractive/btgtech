@@ -3,11 +3,15 @@ package com.betelgeuseinteractive.btgtech.datagen;
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.CoreBlocks;
 import com.betelgeuseinteractive.btgtech.core.CoreItems;
+import com.betelgeuseinteractive.btgtech.core.machine.MachineBlock;
+import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.MultiVariant;
+import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
@@ -35,6 +39,7 @@ final class ModelDefinitionProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         addCore(blockModels, itemModels);
         addMaterials(blockModels, itemModels);
+        addEnergy(blockModels);
     }
 
     private static void addCore(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
@@ -84,5 +89,29 @@ final class ModelDefinitionProvider extends ModelProvider {
                 TextureMapping.layer0(new Material(sprite)),
                 itemModels.modelOutput);
         itemModels.itemModelOutput.accept(item, ItemModelUtils.plainModel(model));
+    }
+
+    private static void addEnergy(BlockModelGenerators blockModels) {
+        EnergyBlocks.BATTERIES.values().forEach(battery -> machineBlock(blockModels, battery.get()));
+    }
+
+    /**
+     * A machine-like block: front, side and top textures of its tier (the top also serves as the bottom), turned towards
+     * its facing, with the animated front while active (ADR 0047).
+     */
+    private static void machineBlock(BlockModelGenerators blockModels, Block block) {
+        TextureMapping idle = new TextureMapping()
+                .put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(block, "_side"))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top"));
+        TextureMapping active =
+                idle.copyAndUpdate(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front_active"));
+        MultiVariant idleModel = BlockModelGenerators.plainVariant(
+                ModelTemplates.CUBE_ORIENTABLE.create(block, idle, blockModels.modelOutput));
+        MultiVariant activeModel = BlockModelGenerators.plainVariant(
+                ModelTemplates.CUBE_ORIENTABLE.createWithSuffix(block, "_active", active, blockModels.modelOutput));
+        blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(block)
+                .with(BlockModelGenerators.createBooleanModelDispatch(MachineBlock.ACTIVE, activeModel, idleModel))
+                .with(BlockModelGenerators.ROTATION_HORIZONTAL_FACING));
     }
 }
