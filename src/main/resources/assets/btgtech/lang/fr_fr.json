@@ -1,3 +1,12 @@
 {
-  "itemGroup.btgtech.btgtech": "BTG Tech"
+  "gui.btgtech.energy": "%s FE",
+  "gui.btgtech.energy.giga": "%s GFE",
+  "gui.btgtech.energy.kilo": "%s kFE",
+  "gui.btgtech.energy.mega": "%s MFE",
+  "gui.btgtech.energy_bar": "%s / %s",
+  "gui.btgtech.redstone_mode.active_with_signal": "Redstone : fonctionne avec signal",
+  "gui.btgtech.redstone_mode.active_without_signal": "Redstone : fonctionne sans signal",
+  "gui.btgtech.redstone_mode.ignore": "Redstone : ignorée",
+  "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.hold_shift": "Maintenez Maj pour plus de détails"
 }

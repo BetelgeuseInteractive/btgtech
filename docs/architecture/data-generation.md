@@ -18,10 +18,10 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 | Data map provider | `btgtech:geothermal_fuels` |
 | Datapack built-in entries provider | Configured features, placed features, biome modifiers |
 | Advancement provider | Progression advancements |
-| Tier texture provider (BTG) | Tier texture variants from base texture + tier mask (ADR 0048) |
+| Tier texture provider (BTG) | Tier texture variants from base texture + tier mask (ADR 0048); `TierTextureProvider` lists the base textures, starting with the machine screen panel |
 | Sprite source provider | Atlas sources that recolor vanilla textures at runtime for material forms (ADR 0074) |
 
-Writing PNG files from data generation was proven in WP-004 (ADR 0048): a provider reads the base texture and the tier mask from the existing resources (`event.getResourceManager(PackType.CLIENT_RESOURCES)` includes `src/main/resources`), combines them with `NativeImage` and `ARGB`, and passes the encoded bytes to `CachedOutput.writeIfNeeded`. `NativeImage` can only write to a file, so the bytes are read back from a temporary file. The output is byte-identical between runs and between Windows and Linux (CI), so the freshness check holds.
+Writing PNG files from data generation was proven in WP-004 (ADR 0048): a provider reads the base texture and the tier mask from the existing resources (`event.getResourceManager(PackType.CLIENT_RESOURCES)` includes `src/main/resources`), combines them with `NativeImage` and `ARGB`, and passes the encoded bytes to `CachedOutput.writeIfNeeded`. `NativeImage` can only write to a file, so the bytes are read back from a temporary file. The output is byte-identical between runs and between Windows and Linux (CI), so the freshness check holds. Under the mask, every pixel must be one of the three Basic tier tones and every mask pixel pure black or white; anything else fails data generation.
 
 ## 2. Hand-Made Resources
 

@@ -12,6 +12,7 @@ Design of all machine-like blocks: processing machines, generators, batteries, i
 | Components | `MachineEnergyStorage` (derived from `SimpleEnergyHandler`), `MachineItemSlots` (inputs, then outputs), `FaceStates`, and in `core.machine.logic` `ProcessingProgress`, `RedstoneMode`, `ActiveState`; fluid tanks follow in WP-201 |
 | `MachineMenu` (abstract) | Machine slots, standard player inventory, shift-click, redstone mode button, data slots for energy, capacity, progress, duration and redstone mode |
 | `MachineCapabilities` | Registers the face-aware energy and item handlers of a machine block entity type |
+| `MachineScreen` (abstract, `core.machine.client`) | Screen base with the tier panel, slot frames, energy bar, redstone mode button and title; widgets and layout in [gui.md](gui.md) |
 | Recipe base | Shared recipe classes and codecs for all BTG recipe types (WP-106) |
 
 Rules for machine code:

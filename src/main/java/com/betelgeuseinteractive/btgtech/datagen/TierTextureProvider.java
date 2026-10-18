@@ -1,0 +1,139 @@
+package com.betelgeuseinteractive.btgtech.datagen;
+
+import com.betelgeuseinteractive.btgtech.BTGTech;
+import com.betelgeuseinteractive.btgtech.core.Tier;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.mojang.blaze3d.platform.NativeImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.CompletableFuture;
+import net.minecraft.data.CachedOutput;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
+import net.minecraft.server.packs.resources.ResourceManager;
+
+/**
+ * Tier texture variants (ADR 0048). Each listed base texture is drawn with the Basic tier tones; its tier mask is white
+ * where the tier color belongs and black elsewhere. For every tier, the Basic tones under the mask take the tones of
+ * that tier (art style guide, section 4).
+ */
+final class TierTextureProvider implements DataProvider {
+    /** Base textures, as paths below {@code assets/btgtech/textures/} without the extension. */
+    private static final List<String> BASE_TEXTURES = List.of(
+            // Machine screens
+            "gui/sprites/machine/panel");
+
+    private static final int MASK_OFF = 0x000000;
+    private static final int MASK_ON = 0xFFFFFF;
+
+    private final PackOutput output;
+    private final ResourceManager resources;
+
+    TierTextureProvider(PackOutput output, ResourceManager resources) {
+        this.output = output;
+        this.resources = resources;
+    }
+
+    @Override
+    public CompletableFuture<?> run(CachedOutput cache) {
+        try {
+            for (String baseTexture : BASE_TEXTURES) {
+                writeVariants(cache, baseTexture);
+            }
+            return CompletableFuture.completedFuture(null);
+        } catch (IOException | IllegalArgumentException e) {
+            return CompletableFuture.failedFuture(e);
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "Tier textures";
+    }
+
+    private void writeVariants(CachedOutput cache, String baseTexture) throws IOException {
+        try (NativeImage base = read(baseTexture);
+                NativeImage mask = read(baseTexture + "_tier_mask")) {
+            if (base.getWidth() != mask.getWidth() || base.getHeight() != mask.getHeight()) {
+                throw new IllegalArgumentException("The tier mask of " + baseTexture + " differs in size");
+            }
+            for (Tier tier : Tier.values()) {
+                try (NativeImage variant = recolor(baseTexture, base, mask, tier)) {
+                    byte[] png = encode(variant);
+                    cache.writeIfNeeded(target(baseTexture, tier), png, sha1(png));
+                }
+            }
+        }
+    }
+
+    private static NativeImage recolor(String baseTexture, NativeImage base, NativeImage mask, Tier tier) {
+        NativeImage variant = new NativeImage(base.getWidth(), base.getHeight(), false);
+        for (int y = 0; y < base.getHeight(); y++) {
+            for (int x = 0; x < base.getWidth(); x++) {
+                int pixel = base.getPixel(x, y);
+                int maskColor = mask.getPixel(x, y) & 0xFFFFFF;
+                if (maskColor == MASK_ON) {
+                    pixel = recolorMasked(baseTexture, x, y, pixel, tier);
+                } else if (maskColor != MASK_OFF) {
+                    throw new IllegalArgumentException(String.format(
+                            Locale.ROOT, "Tier mask of %s is neither black nor white at %d, %d", baseTexture, x, y));
+                }
+                variant.setPixel(x, y, pixel);
+            }
+        }
+        return variant;
+    }
+
+    private static int recolorMasked(String baseTexture, int x, int y, int pixel, Tier tier) {
+        try {
+            return TierRecolor.recolor(pixel, tier);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(
+                    String.format(
+                            Locale.ROOT, "%s at %d, %d under the tier mask: %s", baseTexture, x, y, e.getMessage()),
+                    e);
+        }
+    }
+
+    private NativeImage read(String texture) throws IOException {
+        try (InputStream stream = resources.open(location(texture))) {
+            return NativeImage.read(stream);
+        }
+    }
+
+    // NativeImage writes PNG files only; the data generator cache needs the bytes.
+    private static byte[] encode(NativeImage image) throws IOException {
+        Path file = Files.createTempFile(BTGTech.MOD_ID, ".png");
+        try {
+            image.writeToFile(file);
+            return Files.readAllBytes(file);
+        } finally {
+            Files.delete(file);
+        }
+    }
+
+    // SHA-1 like the vanilla providers; the cache uses the hash only to detect changed output.
+    @SuppressWarnings("deprecation")
+    private static HashCode sha1(byte[] bytes) {
+        return Hashing.sha1().hashBytes(bytes);
+    }
+
+    private Path target(String baseTexture, Tier tier) {
+        int nameStart = baseTexture.lastIndexOf('/') + 1;
+        String variant = baseTexture.substring(0, nameStart) + tier.id() + "_" + baseTexture.substring(nameStart);
+        return output.getOutputFolder(PackOutput.Target.RESOURCE_PACK)
+                .resolve(BTGTech.MOD_ID)
+                .resolve("textures")
+                .resolve(variant + ".png");
+    }
+
+    private static Identifier location(String texture) {
+        return Identifier.fromNamespaceAndPath(BTGTech.MOD_ID, "textures/" + texture + ".png");
+    }
+}

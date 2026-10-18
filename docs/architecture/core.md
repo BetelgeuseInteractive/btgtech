@@ -34,11 +34,13 @@ Registries must never be queried before registration has finished.
 
 | Package | Content | Decision |
 |---|---|---|
-| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`), configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), `CoreFeature` | ADR 0023, 0025, 0033, 0053 |
+| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`) with its color ramp, configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), `CoreFeature` | ADR 0023, 0025, 0033, 0053 |
 | `core.network` | Transport networks: per-level manager (`TransportNetworkManager`), tick and chunk hooks (`TransportNetworks`), endpoint capability caches; extension points `TransportNetworkType` and `TransportNodeBlock` | ADR 0031 |
 | `core.network.logic` | Generic network graph (`NetworkGraph`, `Network`: nodes, merge/split, membership) | ADR 0031 |
 | `core.packet` | Packet protocol version and shared codec helpers | ADR 0054 |
 | `core.machine` | Machine framework: `MachineBlockEntity`, machine definitions, components, BTG energy storage class | ADR 0032, 0034 |
+| `core.machine.logic` | Minecraft-independent machine logic: redstone mode, processing progress, active state, quantity formatting, gauge scaling | ADR 0018, 0035 |
+| `core.machine.client` | Machine screen base and widget set: energy bar, progress arrow, redstone mode button, tooltip helpers | ADR 0044, 0045 |
 
 `core.network` is reserved for transport networks (cables and pipes); packet code uses a different package (planning topic 11).
 

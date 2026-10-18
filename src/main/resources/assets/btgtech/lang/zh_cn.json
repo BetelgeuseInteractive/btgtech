@@ -1,3 +1,12 @@
 {
-  "itemGroup.btgtech.btgtech": "BTG Tech"
+  "gui.btgtech.energy": "%s FE",
+  "gui.btgtech.energy.giga": "%s GFE",
+  "gui.btgtech.energy.kilo": "%s kFE",
+  "gui.btgtech.energy.mega": "%s MFE",
+  "gui.btgtech.energy_bar": "%s / %s",
+  "gui.btgtech.redstone_mode.active_with_signal": "红石：有信号时工作",
+  "gui.btgtech.redstone_mode.active_without_signal": "红石：无信号时工作",
+  "gui.btgtech.redstone_mode.ignore": "红石：忽略",
+  "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.hold_shift": "按住 Shift 查看详情"
 }

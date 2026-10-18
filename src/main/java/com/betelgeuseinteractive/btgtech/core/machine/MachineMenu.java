@@ -106,6 +106,11 @@ public abstract class MachineMenu extends AbstractContainerMenu {
         return block.tier();
     }
 
+    /** Returns whether the machine stores energy, which decides whether its screen shows the energy bar. */
+    public boolean hasEnergy() {
+        return block.definition().energy() != null;
+    }
+
     /** Returns the stored energy. */
     public int energy() {
         return data.get(ENERGY);
