@@ -27,7 +27,7 @@ Phases, versions and work package status. Decisions: ADR [0005](../decisions/000
 | WP-102 | Machine framework | Done |
 | WP-109 | Machine screen and widgets | Done |
 | WP-104 | Materials part 1 | Done |
-| WP-105 | Battery and server config | In progress |
+| WP-105 | Battery and server config | Done |
 | WP-110 | Solid fuel generator | Pending |
 | WP-111 | Energy cable | Pending |
 | WP-103 | Wrench | Pending |

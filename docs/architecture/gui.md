@@ -55,7 +55,7 @@ Positions in pixels from the top left corner of the 176 × 166 panel:
 ## 4. Data Synchronization in Menus
 
 - Slots synchronize item stacks.
-- A `DataSlot` carries a full 32-bit `int` under NeoForge (ADR [0073](../decisions/0073-full-32-bit-menu-data-slots.md)); energy amounts and capacities use one `DataSlot` each.
+- A `DataSlot` carries a full 32-bit `int` under NeoForge (ADR [0073](../decisions/0073-full-32-bit-menu-data-slots.md)); energy amounts and capacities use one `DataSlot` each. Confirmed in game in WP-105: the battery screen shows 123,456 FE exactly.
 - Non-numeric data (fluid type) uses a dedicated packet sent only on change (planning topic 11).
 
 ## 5. Information Display
