@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Einfaches Maschinengehäuse",
+  "block.btgtech.bronze_block": "Bronzeblock",
+  "block.btgtech.deepslate_tin_ore": "Tiefenschiefer-Zinnerz",
+  "block.btgtech.raw_tin_block": "Rohzinnblock",
+  "block.btgtech.tin_block": "Zinnblock",
+  "block.btgtech.tin_ore": "Zinnerz",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Redstone: aktiv mit Signal",
   "gui.btgtech.redstone_mode.active_without_signal": "Redstone: aktiv ohne Signal",
   "gui.btgtech.redstone_mode.ignore": "Redstone: ignoriert",
+  "item.btgtech.basic_circuit": "Einfacher Schaltkreis",
+  "item.btgtech.bronze_dust": "Bronzestaub",
+  "item.btgtech.bronze_ingot": "Bronzebarren",
+  "item.btgtech.bronze_nugget": "Bronzeklumpen",
+  "item.btgtech.bronze_plate": "Bronzeplatte",
+  "item.btgtech.raw_tin": "Rohzinn",
+  "item.btgtech.tin_dust": "Zinnstaub",
+  "item.btgtech.tin_ingot": "Zinnbarren",
+  "item.btgtech.tin_nugget": "Zinnklumpen",
+  "item.btgtech.tin_plate": "Zinnplatte",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Für Details Shift gedrückt halten"
 }
