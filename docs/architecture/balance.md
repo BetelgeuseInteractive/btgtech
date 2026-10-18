@@ -65,4 +65,4 @@ Recipes use `c:` tags. These are needed before the alloy smelter and the Basic m
 | Date | Change | Approved by |
 |---|---|---|
 | 2026-10-11 | Initial defaults (ADR 0043) | Owner |
-| 2026-10-18 | Bronze, Basic casing and Basic circuit recipes (WP-104) | Owner |
+| 2026-10-18 | Bronze, Basic casing and Basic circuit recipes; no experience from smelting dust (WP-104) | Owner |
