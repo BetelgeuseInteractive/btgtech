@@ -11,7 +11,7 @@ Goal: complete item and fluid storage and transport.
 
 ## WP-402 Item pipe
 
-- **Scope:** `item_pipe` in four tiers (Blockbench model); connection modes `insert` / `extract` / `disabled`; round-robin item transfer strategy every 10 ticks; no filters.
+- **Scope:** `item_pipe` in four tiers (Blockbench model); connection modes `insert` / `extract` / `disabled`, cycled with the wrench through its `core` hook (WP-103); round-robin item transfer strategy every 10 ticks; no filters.
 - **Acceptance:** unit tests for the transfer strategy; game tests: chest → pipe → machine; extract mode pulls machine outputs.
 - **Depends on:** WP-101, WP-103.
 - **References:** ADR 0030, 0031, 0043.
