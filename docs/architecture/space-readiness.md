@@ -25,7 +25,7 @@ Rockets and launch pads (multiblocks), planets, oxygen and space suits, planet-s
 
 ### 3.2 Environment Factors
 - Planet properties (gravity, oxygen, temperature, solar factor) are data-defined per dimension.
-- Solar generation has one designated place where an environment factor will be applied ([energy.md §4](energy.md#4-extension-points)).
+- Solar generation has one designated place where an environment factor will be applied ([energy.md §5](energy.md#5-extension-points)).
 
 ### 3.3 Cross-Dimension Transport (`core.network`)
 - A new endpoint type that links networks across levels; the graph infrastructure stays unchanged.
