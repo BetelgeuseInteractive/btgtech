@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "Batterie avancée",
+  "block.btgtech.basic_battery": "Batterie basique",
   "block.btgtech.basic_machine_casing": "Boîtier de machine basique",
   "block.btgtech.bronze_block": "Bloc de bronze",
   "block.btgtech.deepslate_tin_ore": "Minerai d'étain des abîmes",
+  "block.btgtech.elite_battery": "Batterie d'élite",
   "block.btgtech.raw_tin_block": "Bloc d'étain brut",
   "block.btgtech.tin_block": "Bloc d'étain",
   "block.btgtech.tin_ore": "Minerai d'étain",
+  "block.btgtech.ultimate_battery": "Batterie ultime",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "Pépite d'étain",
   "item.btgtech.tin_plate": "Plaque d'étain",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "Perd l'énergie stockée lorsqu'elle est cassée",
   "tooltip.btgtech.hold_shift": "Maintenez Maj pour plus de détails"
 }

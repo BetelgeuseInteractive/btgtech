@@ -45,10 +45,9 @@ final class WorldGenerationEntries {
 
     private WorldGenerationEntries() {}
 
-    /** Returns the entries for {@code GatherDataEvent.createDatapackRegistryObjects}. */
-    static RegistrySetBuilder builder() {
-        return new RegistrySetBuilder()
-                .add(Registries.CONFIGURED_FEATURE, WorldGenerationEntries::configuredFeatures)
+    /** Adds the world generation registries to the datapack entries of data generation. */
+    static void addTo(RegistrySetBuilder builder) {
+        builder.add(Registries.CONFIGURED_FEATURE, WorldGenerationEntries::configuredFeatures)
                 .add(Registries.PLACED_FEATURE, WorldGenerationEntries::placedFeatures)
                 .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, WorldGenerationEntries::biomeModifiers);
     }

@@ -2,6 +2,7 @@ package com.betelgeuseinteractive.btgtech.datagen;
 
 import java.util.List;
 import java.util.Set;
+import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -17,8 +18,11 @@ public final class DataGenerators {
     }
 
     private static void gatherClientData(GatherDataEvent.Client event) {
-        // First, so that the providers below see the world generation entries in their registry lookup.
-        event.createDatapackRegistryObjects(WorldGenerationEntries.builder());
+        // First, so that the providers below see these entries in their registry lookup.
+        RegistrySetBuilder datapackEntries = new RegistrySetBuilder();
+        WorldGenerationEntries.addTo(datapackEntries);
+        GameTestEntries.addTo(datapackEntries);
+        event.createDatapackRegistryObjects(datapackEntries);
         event.createProvider(EnglishLanguageProvider::new);
         event.createProvider(
                 output -> new TierTextureProvider(output, event.getResourceManager(PackType.CLIENT_RESOURCES)));

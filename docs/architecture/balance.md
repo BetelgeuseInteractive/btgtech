@@ -26,6 +26,7 @@ Applies to `electric_furnace`, `crusher`, `compressor`, `alloy_smelter`, `fluid_
 | | Basic | Advanced | Elite | Ultimate |
 |---|---|---|---|---|
 | `battery` capacity | 1,000,000 FE | 4,000,000 FE | 16,000,000 FE | 64,000,000 FE |
+| `battery` transfer (in and out, each) | 1,000 FE/t | 4,000 FE/t | 16,000 FE/t | 64,000 FE/t |
 | `energy_cable` network throughput | 1,000 FE/t | 4,000 FE/t | 16,000 FE/t | 64,000 FE/t |
 
 ## 4. Item and Fluid Storage and Transport
@@ -59,6 +60,7 @@ Recipes use `c:` tags. These are needed before the alloy smelter and the Basic m
 | 4 `bronze_ingot` | Shapeless: 3 copper ingots + 1 tin ingot (ADR 0038 ratio) |
 | `basic_machine_casing` | Iron ingots in the corners, bronze ingots on the edges, center empty |
 | `basic_circuit` | Tin ingot in the center, copper ingots left and right, redstone above and below |
+| `basic_battery` | Basic machine casing in the center, Basic circuit below it, copper ingots on the other edges, redstone in the corners; the higher tiers follow with the tier upgrade recipes (WP-301) |
 
 ## 7. Change Log
 
@@ -66,3 +68,4 @@ Recipes use `c:` tags. These are needed before the alloy smelter and the Basic m
 |---|---|---|
 | 2026-10-11 | Initial defaults (ADR 0043) | Owner |
 | 2026-10-18 | Bronze, Basic casing and Basic circuit recipes; no experience from smelting dust (WP-104) | Owner |
+| 2026-10-18 | Battery transfer rate equal to the cable throughput of its tier; Basic battery recipe (WP-105) | Owner |

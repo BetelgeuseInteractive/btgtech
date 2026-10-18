@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "btgtech:battery_fills_up_to_its_capacity",
+  "max_ticks": 100,
+  "structure": "btgtech:game_test_platform"
+}

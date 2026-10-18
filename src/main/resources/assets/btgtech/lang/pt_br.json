@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "Bateria avançada",
+  "block.btgtech.basic_battery": "Bateria básica",
   "block.btgtech.basic_machine_casing": "Carcaça de máquina básica",
   "block.btgtech.bronze_block": "Bloco de bronze",
   "block.btgtech.deepslate_tin_ore": "Minério de estanho de ardósia profunda",
+  "block.btgtech.elite_battery": "Bateria de elite",
   "block.btgtech.raw_tin_block": "Bloco de estanho bruto",
   "block.btgtech.tin_block": "Bloco de estanho",
   "block.btgtech.tin_ore": "Minério de estanho",
+  "block.btgtech.ultimate_battery": "Bateria suprema",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "Pepita de estanho",
   "item.btgtech.tin_plate": "Placa de estanho",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "Perde a energia armazenada ao ser quebrada",
   "tooltip.btgtech.hold_shift": "Segure Shift para ver detalhes"
 }

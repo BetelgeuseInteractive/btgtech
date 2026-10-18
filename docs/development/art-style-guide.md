@@ -86,7 +86,7 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 
 | File | Location |
 |---|---|
-| Block base texture | `assets/btgtech/textures/block/<block>_<face>.png`, faces `front`, `front_active` (animated, with `.mcmeta`), `side`, `top`, `bottom` |
+| Block base texture | `assets/btgtech/textures/block/<block>_<face>.png`, faces `front`, `front_active` (animated: frames stacked vertically, with `.mcmeta`), `side`, `top`, `bottom` (optional; the top serves as the bottom when there is none) |
 | Tier mask | `assets/btgtech/textures/block/<block>_<face>_tier_mask.png` |
 | Generated tier texture | `assets/btgtech/textures/block/<tier>_<block>_<face>.png` (in `src/generated/resources`) |
 | Block base texture with one texture on all faces | `assets/btgtech/textures/block/<block>.png`, tier mask `<block>_tier_mask.png`, generated `<tier>_<block>.png` |
@@ -97,6 +97,6 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 | GUI base texture and tier mask | `assets/btgtech/textures/gui/sprites/machine/<sprite>.png` and `<sprite>_tier_mask.png` |
 | Generated GUI tier sprite | `assets/btgtech/textures/gui/sprites/machine/<tier>_<sprite>.png` (in `src/generated/resources`) |
 | Palette strips | `assets/btgtech/textures/palettes/<vanilla texture or template>_key.png` and `<vanilla texture or template>_<material>.png` |
-| Art sources | `art/block/<block>.aseprite`, `art/item/<item>.aseprite`, `art/gui/machine/<sprite>.aseprite`, `art/model/<model>.bbmodel` (ADR 0019) |
+| Art sources | One Aseprite file per exported texture or mask, named like it: `art/block/<texture>.aseprite`, `art/item/<texture>.aseprite`, `art/gui/machine/<sprite>.aseprite`; Blockbench models `art/model/<model>.bbmodel` (ADR 0019) |
 
 All names are lowercase snake_case and use the registry IDs of ADR 0039.

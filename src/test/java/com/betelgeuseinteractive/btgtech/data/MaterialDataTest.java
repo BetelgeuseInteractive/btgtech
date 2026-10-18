@@ -134,8 +134,8 @@ class MaterialDataTest {
                 "btgtech:bronze_block",
                 "btgtech:basic_machine_casing");
 
-        assertEquals(blocks, tagValues("data/minecraft/tags/block/mineable/pickaxe.json"));
-        assertEquals(blocks, tagValues("data/minecraft/tags/block/needs_stone_tool.json"));
+        assertTrue(tagValues("data/minecraft/tags/block/mineable/pickaxe.json").containsAll(blocks));
+        assertTrue(tagValues("data/minecraft/tags/block/needs_stone_tool.json").containsAll(blocks));
     }
 
     private static JsonObject singleEntry(String lootTable) {

@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "Gelişmiş Batarya",
+  "block.btgtech.basic_battery": "Temel Batarya",
   "block.btgtech.basic_machine_casing": "Temel Makine Kasası",
   "block.btgtech.bronze_block": "Bronz Bloğu",
   "block.btgtech.deepslate_tin_ore": "Derin Arduvaz Kalay Cevheri",
+  "block.btgtech.elite_battery": "Elit Batarya",
   "block.btgtech.raw_tin_block": "Ham Kalay Bloğu",
   "block.btgtech.tin_block": "Kalay Bloğu",
   "block.btgtech.tin_ore": "Kalay Cevheri",
+  "block.btgtech.ultimate_battery": "Nihai Batarya",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "Kalay Parçacığı",
   "item.btgtech.tin_plate": "Kalay Plakası",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "Kırılınca depoladığı enerjiyi kaybeder",
   "tooltip.btgtech.hold_shift": "Ayrıntılar için Shift'e basılı tutun"
 }

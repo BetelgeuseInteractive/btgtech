@@ -29,7 +29,10 @@ How BTG Tech is tested. Decision: ADR [0060](../decisions/0060-test-strategy.md)
 
 ## 4. Game Tests
 
-- One empty platform structure template; each test places its blocks by code.
+- One empty platform structure template, `btgtech:game_test_platform`: 8 × 4 × 8 blocks, a smooth stone floor and air above. It is a hand-made resource (`data/btgtech/structure/game_test_platform.nbt`, ADR 0060), because a compressed structure written on every data generation run could differ between operating systems and break the freshness check.
+- Each test places its blocks by code, starting at `1, 1, 1` above the floor.
+- Test functions live in the feature they test (`<Feature>GameTests`), registered with a `DeferredRegister` on the test function registry from the feature's bootstrap and listed in its `ALL` constant.
+- `GameTestEntries` (data generation) produces one required test instance per function: default environment, the platform, at most 100 ticks.
 - Minimum coverage per feature: the core behavior of each block type (processing, distribution, transfer, contents kept on break, energy push, face toggling).
 
 ## 5. Rules

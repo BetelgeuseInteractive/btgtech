@@ -35,29 +35,46 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Depends on:** WP-004, WP-005.
 - **References:** ADR 0038, 0040, 0052, 0053, [balance.md §5](../architecture/balance.md#5-ore-generation-overworld).
 
-## WP-105 Energy slice
+## WP-105 Battery and server config
 
-- **Goal:** energy produced, stored and transported.
-- **Scope:** `solid_fuel_generator`, `battery`, `energy_cable`, each in four tiers; cable energy distribution strategy (`energy.logic`); batteries passive; balance values from the `SERVER` config, which `CoreFeature` registers from this work package on (ADR 0025).
-- **Acceptance:** unit tests for the distribution algorithm; game tests: generator charges a battery through a cable; tier throughput limit holds; `runClient`: a GUI shows an energy value above 32,767 correctly (ADR 0073).
-- **Depends on:** WP-101, WP-102, WP-104, WP-109.
-- **References:** ADR 0025, 0026, 0027, 0028, 0043, 0073, [balance.md](../architecture/balance.md).
+- **Goal:** energy stored, and balance values configurable.
+- **Scope:** the `SERVER` config, which `CoreFeature` registers from this work package on (ADR 0025), with the battery values; `battery` in four tiers: passive, comparator output proportional to its fill level, a screen with the energy bar; the game test infrastructure (platform structure, test registration).
+- **Acceptance:** game tests: a battery accepts energy through its capability up to its capacity, and its comparator output follows the fill level; `runClient`: the battery screen shows an energy value above 32,767 correctly (ADR 0073).
+- **Depends on:** WP-102, WP-104, WP-109.
+- **References:** ADR 0025, 0026, 0043, 0060, 0073, [balance.md](../architecture/balance.md).
+- **Changed on 2026-10-18 (owner approval):** the energy slice was split into WP-105 (battery and server config), WP-110 (solid fuel generator) and WP-111 (energy cable), so that each part fits one reviewable pull request.
+
+## WP-110 Solid fuel generator
+
+- **Goal:** the first energy source.
+- **Scope:** `solid_fuel_generator` in four tiers: burns items with a burn time in the `neoforge:furnace_fuels` data map, energy per fuel and output per tier from the balance table and the `SERVER` config, animated active front, a screen with the fuel slot, burn indicator and energy bar. Generators do not push energy yet (WP-204).
+- **Acceptance:** game test: a generator burns coal and produces energy at its tier rate.
+- **Depends on:** WP-105.
+- **References:** ADR 0025, 0039, 0043, 0047, [balance.md](../architecture/balance.md).
+
+## WP-111 Energy cable
+
+- **Goal:** energy transported.
+- **Scope:** `energy_cable` in four tiers (Blockbench model, per-side connection state); cable energy distribution strategy (`energy.logic`); the transfer strategy on the shared network infrastructure; throughput from the `SERVER` config.
+- **Acceptance:** unit tests for the distribution algorithm; game tests: a generator charges a battery through a cable; the tier throughput limit holds.
+- **Depends on:** WP-101, WP-110.
+- **References:** ADR 0026, 0027, 0028, 0031, 0043, [energy.md](../architecture/energy.md).
 
 ## WP-103 Wrench
 
 - **Goal:** the single configuration tool.
 - **Scope:** `wrench` item: toggle machine faces, sneak-dismantle (same drops as breaking), cycle the energy cable's side mode; a wrench hook in `core` that pipes (WP-402, WP-403) and the storage type lock (WP-404) implement later.
 - **Acceptance:** game tests for face toggling, dismantling and the cable side mode.
-- **Depends on:** WP-102, WP-105.
+- **Depends on:** WP-102, WP-111.
 - **References:** ADR 0035, 0039, 0046, 0052.
-- **Changed on 2026-10-18 (owner approval):** moved after WP-105, so that its game tests use the first machine-like blocks and it covers the energy cable, which did not exist before WP-105.
+- **Changed on 2026-10-18 (owner approval):** moved after the energy slice (now WP-111), so that its game tests use the first machine-like blocks and it covers the energy cable, which did not exist before.
 
 ## WP-106 Crusher and recipe base
 
 - **Goal:** the first processing machine and the shared recipe infrastructure.
 - **Scope:** `crusher` in four tiers; shared recipe base and codecs in `core.machine`; `btgtech:crushing` (sized ingredients, outputs with chance byproducts, optional processing time and minimum tier); recipe caching; client recipe sync; recipe book requirement resolved (ADR 0037).
 - **Acceptance:** game test: crusher powered by the energy slice processes tin ore to dust.
-- **Depends on:** WP-105.
+- **Depends on:** WP-111.
 - **References:** ADR 0036, 0037, 0039.
 
 ## WP-107 Item storage unit
@@ -73,5 +90,5 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Goal:** release the vertical slice.
 - **Scope:** fill game-test gaps; all slice keys in eight languages; `CHANGELOG.md`; release `0.1.0+mc26.1.2` as a GitHub pre-release; record architecture findings (and propose ADRs where a decision must change).
 - **Acceptance:** release workflow publishes the pre-release; the owner approves.
-- **Depends on:** WP-101 … WP-107, WP-109.
+- **Depends on:** WP-101 … WP-107, WP-109 … WP-111.
 - **References:** ADR 0051, 0064, 0066.
