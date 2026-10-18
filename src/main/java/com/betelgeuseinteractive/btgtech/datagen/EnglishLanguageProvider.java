@@ -8,8 +8,8 @@ import com.betelgeuseinteractive.btgtech.core.Tier;
 import com.betelgeuseinteractive.btgtech.core.machine.MachineTranslationKeys;
 import com.betelgeuseinteractive.btgtech.core.machine.logic.RedstoneMode;
 import com.betelgeuseinteractive.btgtech.core.machine.logic.SiPrefix;
-import com.betelgeuseinteractive.btgtech.energy.BatteryItem;
 import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
+import com.betelgeuseinteractive.btgtech.energy.EnergyItems;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialItems;
 import net.minecraft.data.PackOutput;
@@ -67,6 +67,6 @@ final class EnglishLanguageProvider extends LanguageProvider {
         addBlock(EnergyBlocks.BATTERIES.get(Tier.ADVANCED), "Advanced Battery");
         addBlock(EnergyBlocks.BATTERIES.get(Tier.ELITE), "Elite Battery");
         addBlock(EnergyBlocks.BATTERIES.get(Tier.ULTIMATE), "Ultimate Battery");
-        add(BatteryItem.LOSES_ENERGY, "Loses its stored energy when broken");
+        add(EnergyItems.BATTERY_LOSES_ENERGY, "Loses its stored energy when broken");
     }
 }
