@@ -52,7 +52,7 @@ public abstract class MachineBlockEntity extends BlockEntity {
                         limits.capacity().applyAsInt(tier),
                         limits.maxInsert().applyAsInt(tier),
                         limits.maxExtract().applyAsInt(tier),
-                        this::setChanged);
+                        this::onEnergyChanged);
         this.items = definition.slotCount() == 0
                 ? null
                 : new MachineItemSlots(definition.inputSlots(), definition.outputSlots(), this::onSlotChanged);
@@ -61,6 +61,14 @@ public abstract class MachineBlockEntity extends BlockEntity {
 
     /** Runs once per server tick if the block ticks (see {@link MachineBlock#ticksOnServer()}); does nothing by default. */
     protected void tick(ServerLevel level) {}
+
+    /**
+     * Called after every change of the stored energy through transfers, production or use, not when it is loaded; marks
+     * the block entity as changed by default.
+     */
+    protected void onEnergyChanged() {
+        setChanged();
+    }
 
     /** Returns the tier of the block. */
     public Tier tier() {

@@ -1,6 +1,8 @@
 package com.betelgeuseinteractive.btgtech.core.machine;
 
 import com.betelgeuseinteractive.btgtech.core.Tier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -34,6 +36,10 @@ public abstract class MachineBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     /** Whether the machine is visibly working. */
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+    /** Encodes a tier by its identifier, for the block codecs of the machine blocks. */
+    protected static final Codec<Tier> TIER_CODEC = Codec.STRING.comapFlatMap(
+            id -> Tier.byId(id).map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown tier " + id)),
+            Tier::id);
 
     private final Tier tier;
     private final MachineDefinition definition;
