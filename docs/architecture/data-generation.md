@@ -8,18 +8,20 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 - Output: `src/generated/resources/`, committed; CI fails if regenerated output differs.
 - Code: `datagen` package, one class per provider type, organized in per-feature sections. `datagen` may use client classes such as the model provider, and only client code references it (ADR [0075](../decisions/0075-data-generation-may-use-client-classes.md)).
 
-| Provider | Produces |
-|---|---|
-| Model provider | Block states, block and item models, client item definitions |
-| Language provider | `en_us.json` |
-| Loot table provider | Block loot tables (ADR 0052) |
-| Recipe provider | Crafting, smelting and all BTG recipe types |
-| Tag providers | Block and item tags (`c:` and `minecraft:` tags) |
-| Data map provider | `btgtech:geothermal_fuels` |
-| Datapack built-in entries provider | Configured features, placed features, biome modifiers |
-| Advancement provider | Progression advancements |
-| Tier texture provider (BTG) | Tier texture variants from base texture + tier mask (ADR 0048); `TierTextureProvider` lists the base textures, starting with the machine screen panel |
-| Sprite source provider | Atlas sources that recolor vanilla textures at runtime for material forms (ADR 0074) |
+| Provider | Class | Produces |
+|---|---|---|
+| Model provider | `ModelDefinitionProvider` | Block states, block and item models, client item definitions |
+| Language provider | `EnglishLanguageProvider` | `en_us.json` |
+| Loot table provider | `BlockLootProvider` | Block loot tables (ADR 0052) |
+| Recipe provider | `RecipeDefinitionProvider` | Crafting, smelting and all BTG recipe types; ingredients are `c:` tags |
+| Tag providers | `BlockTagProvider`, `ItemTagProvider` | Block and item tags (`c:` and `minecraft:` tags); block item tags are copied from block tags |
+| Data map provider | (WP-203) | `btgtech:geothermal_fuels` |
+| Datapack built-in entries provider | `WorldGenerationEntries` | Configured features, placed features, biome modifiers; registered first, so that the other providers see these entries |
+| Advancement provider | (WP-503) | Progression advancements |
+| Tier texture provider (BTG) | `TierTextureProvider` | Tier texture variants from base texture + tier mask (ADR 0048); each base texture names its tiers |
+| Sprite source provider | `RecoloredSpriteProvider` | Atlas sources that recolor vanilla textures and BTG templates at runtime for material forms (ADR 0074) |
+
+`MaterialTextures` names the recolored sprites for both the model and the sprite source provider, and `MaterialTags` holds the `c:` tag keys.
 
 Writing PNG files from data generation was proven in WP-004 (ADR 0048): a provider reads the base texture and the tier mask from the existing resources (`event.getResourceManager(PackType.CLIENT_RESOURCES)` includes `src/main/resources`), combines them with `NativeImage` and `ARGB`, and passes the encoded bytes to `CachedOutput.writeIfNeeded`. `NativeImage` can only write to a file, so the bytes are read back from a temporary file. The output is byte-identical between runs and between Windows and Linux (CI), so the freshness check holds. Under the mask, every pixel must be one of the three Basic tier tones and every mask pixel pure black or white; anything else fails data generation.
 

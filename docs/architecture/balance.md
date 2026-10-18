@@ -48,9 +48,21 @@ Applies to `electric_furnace`, `crusher`, `compressor`, `alloy_smelter`, `fluid_
 
 - Crusher: raw ore → 1 dust + 33 % chance of a second dust; ore block → 2 dust.
 - Exact recipe lists are produced by data generation (planning topic 10).
+- Smelting and blasting raw tin or tin ore gives 0.7 experience, like iron; smelting dust gives none, so that crushing never multiplies experience.
+
+### Crafting before the machines
+
+Recipes use `c:` tags. These are needed before the alloy smelter and the Basic machines exist:
+
+| Result | Recipe |
+|---|---|
+| 4 `bronze_ingot` | Shapeless: 3 copper ingots + 1 tin ingot (ADR 0038 ratio) |
+| `basic_machine_casing` | Iron ingots in the corners, bronze ingots on the edges, center empty |
+| `basic_circuit` | Tin ingot in the center, copper ingots left and right, redstone above and below |
 
 ## 7. Change Log
 
 | Date | Change | Approved by |
 |---|---|---|
 | 2026-10-11 | Initial defaults (ADR 0043) | Owner |
+| 2026-10-18 | Bronze, Basic casing and Basic circuit recipes (WP-104) | Owner |

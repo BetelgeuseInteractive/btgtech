@@ -17,7 +17,7 @@ Every feature package (`energy`, `machine`, `storage`, `logistics`, `material`, 
 ## 2. Startup Sequence
 
 1. NeoForge constructs **`BTGTech`** on both sides. Its constructor calls, in this order:
-   1. `CoreFeature.register(modBus)`: shared infrastructure (the creative tab). Configuration registration joins it with the first config value (`SERVER`: WP-105), adding the `ModContainer` parameter.
+   1. `CoreFeature.register(modBus)`: shared infrastructure (the creative tab, the tiered crafting components). Configuration registration joins it with the first config value (`SERVER`: WP-105), adding the `ModContainer` parameter.
    2. `MaterialFeature.register(modBus)`
    3. `EnergyFeature.register(modBus)`
    4. `MachineFeature.register(modBus)`
@@ -34,7 +34,7 @@ Registries must never be queried before registration has finished.
 
 | Package | Content | Decision |
 |---|---|---|
-| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`) with its color ramp, configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), `CoreFeature` | ADR 0023, 0025, 0033, 0053 |
+| `core` | Tier definition (`basic`, `advanced`, `elite`, `ultimate`) with its color ramp, configuration registration, the "BTG Tech" creative tab (`CoreCreativeModeTabs`), the tiered crafting components (`CoreBlocks`: machine casings, `CoreItems`: circuits), `CoreFeature` | ADR 0023, 0025, 0033, 0040, 0053 |
 | `core.network` | Transport networks: per-level manager (`TransportNetworkManager`), tick and chunk hooks (`TransportNetworks`), endpoint capability caches; extension points `TransportNetworkType` and `TransportNodeBlock` | ADR 0031 |
 | `core.network.logic` | Generic network graph (`NetworkGraph`, `Network`: nodes, merge/split, membership) | ADR 0031 |
 | `core.packet` | Packet protocol version and shared codec helpers | ADR 0054 |

@@ -12,3 +12,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - The build checks code formatting, architecture rules and translation completeness.
 - Bug report form for GitHub issues.
 - "BTG Tech" creative tab, with its title in all eight languages.
+- Tin ore in the overworld (stone and deepslate) and the tin and bronze materials: raw tin, ingots, nuggets, dusts, plates and storage blocks, with crafting and smelting recipes.
+- Basic machine casing and Basic circuit, the crafting components of the first machines.
