@@ -6,7 +6,7 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 
 - Run: `runData` (ADR 0015). All providers are registered on `GatherDataEvent.Client` via `event.createProvider(...)` in `DataGenerators`, which `BTGTechClient` registers.
 - Output: `src/generated/resources/`, committed; CI fails if regenerated output differs.
-- Code: `datagen` package, one class per provider type, organized in per-feature sections.
+- Code: `datagen` package, one class per provider type, organized in per-feature sections. `datagen` may use client classes such as the model provider, and only client code references it (ADR [0075](../decisions/0075-data-generation-may-use-client-classes.md)).
 
 | Provider | Produces |
 |---|---|

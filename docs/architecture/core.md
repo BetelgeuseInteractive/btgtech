@@ -48,7 +48,7 @@ Registries must never be queried before registration has finished.
 
 - Shared code goes to `core` only with at least two users or when inherently cross-cutting (ADR 0023).
 - `core` never imports feature packages; feature packages never form cycles.
-- Client-only classes live only in `client` packages; nothing outside `client` imports them (ADR 0018).
+- Client-only classes live only in `client` packages; nothing outside `client` imports them (ADR 0018), except the `datagen` package, which only client code reaches (ADR 0075).
 - `logic` packages never import `net.minecraft..` or `net.neoforged..` (ADR 0018).
 - Features talk to each other through NeoForge capabilities where possible (ADR 0023).
 

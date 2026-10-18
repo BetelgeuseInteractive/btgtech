@@ -23,11 +23,20 @@ class ArchitectureTest {
     @ArchTest
     static final ArchRule CLIENT_CODE_IS_ISOLATED = noClasses()
             .that()
-            .resideOutsideOfPackage("..client..")
+            .resideOutsideOfPackages("..client..", ROOT + ".datagen..")
             .should()
             .dependOnClassesThat()
             .resideInAPackage("..client..")
-            .because("client-only code must never be reachable from common code (ADR 0009, 0018)");
+            .because("client-only code must never be reachable from common code (ADR 0009, 0018, 0075)");
+
+    @ArchTest
+    static final ArchRule ONLY_CLIENT_CODE_REFERENCES_DATA_GENERATION = noClasses()
+            .that()
+            .resideOutsideOfPackages("..client..", ROOT + ".datagen..")
+            .should()
+            .dependOnClassesThat()
+            .resideInAPackage(ROOT + ".datagen..")
+            .because("data generation runs only in the client data run and may use client classes (ADR 0075)");
 
     @ArchTest
     static final ArchRule LOGIC_IS_INDEPENDENT_OF_MINECRAFT = noClasses()
