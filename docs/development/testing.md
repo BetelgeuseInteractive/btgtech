@@ -14,12 +14,13 @@ How BTG Tech is tested. Decision: ADR [0060](../decisions/0060-test-strategy.md)
 
 ## 2. Required Architecture Rules
 
-1. No class outside a `..client..` package depends on a `..client..` package.
+1. No class outside a `..client..` package or the `datagen` package depends on a `..client..` package (ADR 0075).
 2. No class in a `..logic..` package depends on `net.minecraft..` or `net.neoforged..`.
 3. No class in `..core..` depends on a feature package.
 4. Feature packages are free of cycles.
 5. Only `..compat.jei..` references JEI; only `..compat.jade..` references Jade.
 6. `@EventBusSubscriber` is not used; plugin annotations appear only in `..compat..`.
+7. Only classes in `..client..` packages depend on the `datagen` package (ADR 0075).
 
 ## 3. Required Data Checks
 

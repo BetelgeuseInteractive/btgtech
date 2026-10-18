@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "raw_tin",
+  "ingredients": [
+    "#c:storage_blocks/raw_tin"
+  ],
+  "result": {
+    "count": 9,
+    "id": "btgtech:raw_tin"
+  }
+}

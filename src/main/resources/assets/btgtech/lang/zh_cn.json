@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "基础机器外壳",
+  "block.btgtech.bronze_block": "青铜块",
+  "block.btgtech.deepslate_tin_ore": "深层锡矿石",
+  "block.btgtech.raw_tin_block": "粗锡块",
+  "block.btgtech.tin_block": "锡块",
+  "block.btgtech.tin_ore": "锡矿石",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "红石：有信号时工作",
   "gui.btgtech.redstone_mode.active_without_signal": "红石：无信号时工作",
   "gui.btgtech.redstone_mode.ignore": "红石：忽略",
+  "item.btgtech.basic_circuit": "基础电路",
+  "item.btgtech.bronze_dust": "青铜粉",
+  "item.btgtech.bronze_ingot": "青铜锭",
+  "item.btgtech.bronze_nugget": "青铜粒",
+  "item.btgtech.bronze_plate": "青铜板",
+  "item.btgtech.raw_tin": "粗锡",
+  "item.btgtech.tin_dust": "锡粉",
+  "item.btgtech.tin_ingot": "锡锭",
+  "item.btgtech.tin_nugget": "锡粒",
+  "item.btgtech.tin_plate": "锡板",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "按住 Shift 查看详情"
 }

@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Temel Makine Kasası",
+  "block.btgtech.bronze_block": "Bronz Bloğu",
+  "block.btgtech.deepslate_tin_ore": "Derin Arduvaz Kalay Cevheri",
+  "block.btgtech.raw_tin_block": "Ham Kalay Bloğu",
+  "block.btgtech.tin_block": "Kalay Bloğu",
+  "block.btgtech.tin_ore": "Kalay Cevheri",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Redstone: sinyalle çalışır",
   "gui.btgtech.redstone_mode.active_without_signal": "Redstone: sinyalsiz çalışır",
   "gui.btgtech.redstone_mode.ignore": "Redstone: yok sayılır",
+  "item.btgtech.basic_circuit": "Temel Devre",
+  "item.btgtech.bronze_dust": "Bronz Tozu",
+  "item.btgtech.bronze_ingot": "Bronz Külçesi",
+  "item.btgtech.bronze_nugget": "Bronz Parçacığı",
+  "item.btgtech.bronze_plate": "Bronz Plakası",
+  "item.btgtech.raw_tin": "Ham Kalay",
+  "item.btgtech.tin_dust": "Kalay Tozu",
+  "item.btgtech.tin_ingot": "Kalay Külçesi",
+  "item.btgtech.tin_nugget": "Kalay Parçacığı",
+  "item.btgtech.tin_plate": "Kalay Plakası",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Ayrıntılar için Shift'e basılı tutun"
 }

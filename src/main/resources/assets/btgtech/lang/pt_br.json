@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Carcaça de máquina básica",
+  "block.btgtech.bronze_block": "Bloco de bronze",
+  "block.btgtech.deepslate_tin_ore": "Minério de estanho de ardósia profunda",
+  "block.btgtech.raw_tin_block": "Bloco de estanho bruto",
+  "block.btgtech.tin_block": "Bloco de estanho",
+  "block.btgtech.tin_ore": "Minério de estanho",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Redstone: ativa com sinal",
   "gui.btgtech.redstone_mode.active_without_signal": "Redstone: ativa sem sinal",
   "gui.btgtech.redstone_mode.ignore": "Redstone: ignorada",
+  "item.btgtech.basic_circuit": "Circuito básico",
+  "item.btgtech.bronze_dust": "Pó de bronze",
+  "item.btgtech.bronze_ingot": "Barra de bronze",
+  "item.btgtech.bronze_nugget": "Pepita de bronze",
+  "item.btgtech.bronze_plate": "Placa de bronze",
+  "item.btgtech.raw_tin": "Estanho bruto",
+  "item.btgtech.tin_dust": "Pó de estanho",
+  "item.btgtech.tin_ingot": "Barra de estanho",
+  "item.btgtech.tin_nugget": "Pepita de estanho",
+  "item.btgtech.tin_plate": "Placa de estanho",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Segure Shift para ver detalhes"
 }

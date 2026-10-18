@@ -1,0 +1,61 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/raw_iron_key",
+      "permutations": {
+        "tin": "btgtech:palettes/raw_iron_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:item/raw_iron"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/iron_ingot_key",
+      "permutations": {
+        "bronze": "btgtech:palettes/iron_ingot_bronze",
+        "tin": "btgtech:palettes/iron_ingot_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:item/iron_ingot"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/iron_nugget_key",
+      "permutations": {
+        "bronze": "btgtech:palettes/iron_nugget_bronze",
+        "tin": "btgtech:palettes/iron_nugget_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:item/iron_nugget"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/dust_key",
+      "permutations": {
+        "bronze": "btgtech:palettes/dust_bronze",
+        "tin": "btgtech:palettes/dust_tin"
+      },
+      "textures": [
+        "btgtech:item/dust"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/plate_key",
+      "permutations": {
+        "bronze": "btgtech:palettes/plate_bronze",
+        "tin": "btgtech:palettes/plate_tin"
+      },
+      "textures": [
+        "btgtech:item/plate"
+      ]
+    }
+  ]
+}

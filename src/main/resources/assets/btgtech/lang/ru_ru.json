@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Базовый корпус машины",
+  "block.btgtech.bronze_block": "Бронзовый блок",
+  "block.btgtech.deepslate_tin_ore": "Оловянная руда в глубинном сланце",
+  "block.btgtech.raw_tin_block": "Блок необработанного олова",
+  "block.btgtech.tin_block": "Оловянный блок",
+  "block.btgtech.tin_ore": "Оловянная руда",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Редстоун: работает с сигналом",
   "gui.btgtech.redstone_mode.active_without_signal": "Редстоун: работает без сигнала",
   "gui.btgtech.redstone_mode.ignore": "Редстоун: игнорируется",
+  "item.btgtech.basic_circuit": "Базовая схема",
+  "item.btgtech.bronze_dust": "Бронзовая пыль",
+  "item.btgtech.bronze_ingot": "Бронзовый слиток",
+  "item.btgtech.bronze_nugget": "Кусочек бронзы",
+  "item.btgtech.bronze_plate": "Бронзовая пластина",
+  "item.btgtech.raw_tin": "Необработанное олово",
+  "item.btgtech.tin_dust": "Оловянная пыль",
+  "item.btgtech.tin_ingot": "Оловянный слиток",
+  "item.btgtech.tin_nugget": "Кусочек олова",
+  "item.btgtech.tin_plate": "Оловянная пластина",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Удерживайте Shift для подробностей"
 }

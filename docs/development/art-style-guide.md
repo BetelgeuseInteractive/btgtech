@@ -38,27 +38,39 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 
 - **Blocks:** 2×2 corner pieces, one pixel in from each edge (pixels 1–2 and 13–14), on every machine face. Upper pieces are lit (light tone at the top left), lower pieces are in shadow (mid and dark tones).
 - **Base texture and mask (ADR 0048):** the base texture draws the corner pieces in the Basic ramp; the tier mask is a grayscale image of the same size that is white exactly on the corner pieces and black elsewhere. Data generation replaces the Basic tones under the mask with the matching tones of the target tier.
-- **Cables:** the tier color sits in the center of the node faces (section 6).
-- **GUI:** see section 7.
+- **Cables:** the tier color sits in the center of the node faces (section 7).
+- **GUI:** see section 8.
 
 ## 5. Materials
 
 - Forms with a vanilla counterpart (ore, deepslate ore, raw item, raw block, ingot, nugget, storage block) are recolored at runtime from the vanilla iron texture of the same form with a `minecraft:paletted_permutations` atlas source. The mod ships two palette strips per form: the vanilla colors (key) and the material colors. Atlas source definitions are produced by data generation.
 - For ores, only the ore colors are in the key; the stone or deepslate colors stay unchanged.
-- Forms without a vanilla counterpart (dust, plate) are drawn in vanilla item style with the material's colors.
+- Forms without a vanilla counterpart (dust, plate) are drawn once in vanilla item style as a gray template (`item/dust`, `item/plate`) and recolored at runtime the same way, with one palette strip per material; every material's dust and plate share one shape.
+- Recolored sprites are named after their source: `minecraft:<vanilla texture>_btgtech_<material>` (the `_btgtech_` separator keeps them apart from sprites other mods derive from the same vanilla texture) and `btgtech:<template>_<material>`.
+- A palette key holds each color of its texture once, darkest first; a material palette has the same length.
 - Each material gets its own palette, reviewed by the owner.
 
 **Tin:** a clearly blue, light silver.
-- Metal forms: each vanilla tone is replaced by its luminance multiplied by (0.86, 0.96, 1.10) for red, green and blue, capped at 255.
+- Metal forms and templates: each tone is replaced by its luminance multiplied by (0.86, 0.96, 1.10) for red, green and blue, capped at 255.
 - Ore clusters, darkest to lightest: `#465868` `#6A8399` `#97B1C6` `#C2D7E6` `#E6F1F8`.
 
-## 6. Energy Cable
+**Bronze:** a warm brown-orange, darker and browner than copper, less yellow than gold.
+- Metal forms and templates: each tone is replaced by its luminance multiplied by (0.95, 0.66, 0.36).
+
+**Templates:** gray tones `#3A3A3A` `#5C5C5C` `#808080` `#A6A6A6` `#CACACA` `#EAEAEA`, light from the top left.
+
+## 6. Crafting Components
+
+- Machine casing: a cube with the machine side design on all faces (iron frame, copper panel) and tier corner pieces in all four corners, as a base texture and tier mask (section 4).
+- Circuit: a green board with copper contacts and a chip; the label on the chip carries the tier tones, as a base texture and tier mask.
+
+## 7. Energy Cable
 
 - Model: an arm of 4×4 px across the block and a 6×6×6 px node in the center (Blockbench model, ADR 0047).
 - Texture layout (16×16): rows 0–3 arm side (16×4), rows 4–7 columns 0–3 arm end (4×4), rows 8–13 columns 0–5 node face (6×6).
 - Copper conductor (copper panel ramp, section 3) with a short repeating pattern along the arm; iron node with the tier color as a 2×2 center.
 
-## 7. GUI
+## 8. GUI
 
 - Vanilla panel and frame: panel `#C6C6C6`, 2-px bevels `#FFFFFF` (top left) and `#555555` (bottom right), 1-px `#000000` outline with rounded corners.
 - Tier corner pieces in the four inner corners: L-shapes with 8-px arms, 2 px thick, starting 3 px in from the outer edge. Outer row and column in the mid tone, the corner pixels in the light tone, the inner row and column in the dark tone.
@@ -70,18 +82,21 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 - Icons (10 × 10 px) are drawn in the colors of what they show and stay readable on the vanilla button: redstone dust for "ignore", a lit and an unlit redstone torch for the two signal modes.
 - Layout and widgets: [gui.md](../architecture/gui.md).
 
-## 8. File Naming
+## 9. File Naming
 
 | File | Location |
 |---|---|
 | Block base texture | `assets/btgtech/textures/block/<block>_<face>.png`, faces `front`, `front_active` (animated, with `.mcmeta`), `side`, `top`, `bottom` |
 | Tier mask | `assets/btgtech/textures/block/<block>_<face>_tier_mask.png` |
 | Generated tier texture | `assets/btgtech/textures/block/<tier>_<block>_<face>.png` (in `src/generated/resources`) |
+| Block base texture with one texture on all faces | `assets/btgtech/textures/block/<block>.png`, tier mask `<block>_tier_mask.png`, generated `<tier>_<block>.png` |
 | Item texture | `assets/btgtech/textures/item/<item>.png` |
+| Item base texture and tier mask | `assets/btgtech/textures/item/<item>.png` and `<item>_tier_mask.png`, generated `<tier>_<item>.png` |
+| Material template | `assets/btgtech/textures/item/<form>.png` (`dust`, `plate`) |
 | GUI sprite | `assets/btgtech/textures/gui/sprites/machine/<sprite>.png`, sprite ID `btgtech:machine/<sprite>` |
 | GUI base texture and tier mask | `assets/btgtech/textures/gui/sprites/machine/<sprite>.png` and `<sprite>_tier_mask.png` |
 | Generated GUI tier sprite | `assets/btgtech/textures/gui/sprites/machine/<tier>_<sprite>.png` (in `src/generated/resources`) |
-| Palette strips | `assets/btgtech/textures/palettes/<vanilla texture>_key.png` and `<vanilla texture>_<material>.png` |
+| Palette strips | `assets/btgtech/textures/palettes/<vanilla texture or template>_key.png` and `<vanilla texture or template>_<material>.png` |
 | Art sources | `art/block/<block>.aseprite`, `art/item/<item>.aseprite`, `art/gui/machine/<sprite>.aseprite`, `art/model/<model>.bbmodel` (ADR 0019) |
 
 All names are lowercase snake_case and use the registry IDs of ADR 0039.

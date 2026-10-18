@@ -27,14 +27,6 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Depends on:** WP-102.
 - **References:** ADR 0044, 0045, 0074, [gui.md](../architecture/gui.md), [art style guide](../development/art-style-guide.md).
 
-## WP-103 Wrench
-
-- **Goal:** the single configuration tool.
-- **Scope:** `wrench` item: toggle machine faces, sneak-dismantle (same drops as breaking), cycle cable/pipe connection modes; storage type lock hook used later by WP-404.
-- **Acceptance:** game tests for face toggling and dismantling.
-- **Depends on:** WP-102.
-- **References:** ADR 0035, 0039, 0046, 0052.
-
 ## WP-104 Materials part 1
 
 - **Goal:** materials needed by the slice.
@@ -50,6 +42,15 @@ Goal: one minimal, end-to-end path through every layer — network, framework, G
 - **Acceptance:** unit tests for the distribution algorithm; game tests: generator charges a battery through a cable; tier throughput limit holds; `runClient`: a GUI shows an energy value above 32,767 correctly (ADR 0073).
 - **Depends on:** WP-101, WP-102, WP-104, WP-109.
 - **References:** ADR 0025, 0026, 0027, 0028, 0043, 0073, [balance.md](../architecture/balance.md).
+
+## WP-103 Wrench
+
+- **Goal:** the single configuration tool.
+- **Scope:** `wrench` item: toggle machine faces, sneak-dismantle (same drops as breaking), cycle the energy cable's side mode; a wrench hook in `core` that pipes (WP-402, WP-403) and the storage type lock (WP-404) implement later.
+- **Acceptance:** game tests for face toggling, dismantling and the cable side mode.
+- **Depends on:** WP-102, WP-105.
+- **References:** ADR 0035, 0039, 0046, 0052.
+- **Changed on 2026-10-18 (owner approval):** moved after WP-105, so that its game tests use the first machine-like blocks and it covers the energy cable, which did not exist before WP-105.
 
 ## WP-106 Crusher and recipe base
 

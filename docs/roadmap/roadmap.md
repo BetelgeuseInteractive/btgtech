@@ -26,9 +26,9 @@ Phases, versions and work package status. Decisions: ADR [0005](../decisions/000
 | WP-101 | Network infrastructure | Done |
 | WP-102 | Machine framework | Done |
 | WP-109 | Machine screen and widgets | Done |
-| WP-103 | Wrench | Pending |
-| WP-104 | Materials part 1 | Pending |
+| WP-104 | Materials part 1 | Done |
 | WP-105 | Energy slice | Pending |
+| WP-103 | Wrench | Pending |
 | WP-106 | Crusher and recipe base | Pending |
 | WP-107 | Item storage unit | Pending |
 | WP-108 | Slice game tests, translations and 0.1.0 | Pending |

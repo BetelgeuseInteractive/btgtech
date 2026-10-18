@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
@@ -24,10 +26,12 @@ import net.minecraft.server.packs.resources.ResourceManager;
  * that tier (art style guide, section 4).
  */
 final class TierTextureProvider implements DataProvider {
-    /** Base textures, as paths below {@code assets/btgtech/textures/} without the extension. */
-    private static final List<String> BASE_TEXTURES = List.of(
+    private static final List<BaseTexture> BASE_TEXTURES = List.of(
             // Machine screens
-            "gui/sprites/machine/panel");
+            new BaseTexture("gui/sprites/machine/panel", EnumSet.allOf(Tier.class)),
+            // Crafting components; the other tiers follow with their components in WP-301
+            new BaseTexture("block/machine_casing", EnumSet.of(Tier.BASIC)),
+            new BaseTexture("item/circuit", EnumSet.of(Tier.BASIC)));
 
     private static final int MASK_OFF = 0x000000;
     private static final int MASK_ON = 0xFFFFFF;
@@ -43,8 +47,8 @@ final class TierTextureProvider implements DataProvider {
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
         try {
-            for (String baseTexture : BASE_TEXTURES) {
-                writeVariants(cache, baseTexture);
+            for (BaseTexture baseTexture : BASE_TEXTURES) {
+                writeVariants(cache, baseTexture.path(), baseTexture.tiers());
             }
             return CompletableFuture.completedFuture(null);
         } catch (IOException | IllegalArgumentException e) {
@@ -57,13 +61,13 @@ final class TierTextureProvider implements DataProvider {
         return "Tier textures";
     }
 
-    private void writeVariants(CachedOutput cache, String baseTexture) throws IOException {
+    private void writeVariants(CachedOutput cache, String baseTexture, Set<Tier> tiers) throws IOException {
         try (NativeImage base = read(baseTexture);
                 NativeImage mask = read(baseTexture + "_tier_mask")) {
             if (base.getWidth() != mask.getWidth() || base.getHeight() != mask.getHeight()) {
                 throw new IllegalArgumentException("The tier mask of " + baseTexture + " differs in size");
             }
-            for (Tier tier : Tier.values()) {
+            for (Tier tier : tiers) {
                 try (NativeImage variant = recolor(baseTexture, base, mask, tier)) {
                     byte[] png = encode(variant);
                     cache.writeIfNeeded(target(baseTexture, tier), png, sha1(png));
@@ -136,4 +140,10 @@ final class TierTextureProvider implements DataProvider {
     private static Identifier location(String texture) {
         return Identifier.fromNamespaceAndPath(BTGTech.MOD_ID, "textures/" + texture + ".png");
     }
+
+    /**
+     * A base texture, as a path below {@code assets/btgtech/textures/} without the extension, and the tiers that have a
+     * variant of it.
+     */
+    private record BaseTexture(String path, Set<Tier> tiers) {}
 }

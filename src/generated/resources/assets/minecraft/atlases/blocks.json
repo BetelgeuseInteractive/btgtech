@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/iron_ore_key",
+      "permutations": {
+        "tin": "btgtech:palettes/iron_ore_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:block/iron_ore"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/deepslate_iron_ore_key",
+      "permutations": {
+        "tin": "btgtech:palettes/deepslate_iron_ore_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:block/deepslate_iron_ore"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/raw_iron_block_key",
+      "permutations": {
+        "tin": "btgtech:palettes/raw_iron_block_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:block/raw_iron_block"
+      ]
+    },
+    {
+      "type": "minecraft:paletted_permutations",
+      "palette_key": "btgtech:palettes/iron_block_key",
+      "permutations": {
+        "bronze": "btgtech:palettes/iron_block_bronze",
+        "tin": "btgtech:palettes/iron_block_tin"
+      },
+      "separator": "_btgtech_",
+      "textures": [
+        "minecraft:block/iron_block"
+      ]
+    }
+  ]
+}

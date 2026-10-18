@@ -1,6 +1,6 @@
 # 0018. Feature-based package layout
 
-- **Status:** Accepted
+- **Status:** Accepted (amended by [0075](0075-data-generation-may-use-client-classes.md))
 - **Date:** 2026-10-11
 
 ## Context

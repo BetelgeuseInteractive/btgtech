@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Boîtier de machine basique",
+  "block.btgtech.bronze_block": "Bloc de bronze",
+  "block.btgtech.deepslate_tin_ore": "Minerai d'étain des abîmes",
+  "block.btgtech.raw_tin_block": "Bloc d'étain brut",
+  "block.btgtech.tin_block": "Bloc d'étain",
+  "block.btgtech.tin_ore": "Minerai d'étain",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Redstone : fonctionne avec signal",
   "gui.btgtech.redstone_mode.active_without_signal": "Redstone : fonctionne sans signal",
   "gui.btgtech.redstone_mode.ignore": "Redstone : ignorée",
+  "item.btgtech.basic_circuit": "Circuit basique",
+  "item.btgtech.bronze_dust": "Poudre de bronze",
+  "item.btgtech.bronze_ingot": "Lingot de bronze",
+  "item.btgtech.bronze_nugget": "Pépite de bronze",
+  "item.btgtech.bronze_plate": "Plaque de bronze",
+  "item.btgtech.raw_tin": "Étain brut",
+  "item.btgtech.tin_dust": "Poudre d'étain",
+  "item.btgtech.tin_ingot": "Lingot d'étain",
+  "item.btgtech.tin_nugget": "Pépite d'étain",
+  "item.btgtech.tin_plate": "Plaque d'étain",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Maintenez Maj pour plus de détails"
 }

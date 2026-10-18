@@ -1,4 +1,10 @@
 {
+  "block.btgtech.basic_machine_casing": "Basic Machine Casing",
+  "block.btgtech.bronze_block": "Block of Bronze",
+  "block.btgtech.deepslate_tin_ore": "Deepslate Tin Ore",
+  "block.btgtech.raw_tin_block": "Block of Raw Tin",
+  "block.btgtech.tin_block": "Block of Tin",
+  "block.btgtech.tin_ore": "Tin Ore",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -7,6 +13,16 @@
   "gui.btgtech.redstone_mode.active_with_signal": "Redstone: active with signal",
   "gui.btgtech.redstone_mode.active_without_signal": "Redstone: active without signal",
   "gui.btgtech.redstone_mode.ignore": "Redstone: ignored",
+  "item.btgtech.basic_circuit": "Basic Circuit",
+  "item.btgtech.bronze_dust": "Bronze Dust",
+  "item.btgtech.bronze_ingot": "Bronze Ingot",
+  "item.btgtech.bronze_nugget": "Bronze Nugget",
+  "item.btgtech.bronze_plate": "Bronze Plate",
+  "item.btgtech.raw_tin": "Raw Tin",
+  "item.btgtech.tin_dust": "Tin Dust",
+  "item.btgtech.tin_ingot": "Tin Ingot",
+  "item.btgtech.tin_nugget": "Tin Nugget",
+  "item.btgtech.tin_plate": "Tin Plate",
   "itemGroup.btgtech.btgtech": "BTG Tech",
   "tooltip.btgtech.hold_shift": "Hold Shift for details"
 }

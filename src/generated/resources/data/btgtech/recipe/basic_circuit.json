@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": "#c:ingots/copper",
+    "R": "#c:dusts/redstone",
+    "T": "#c:ingots/tin"
+  },
+  "pattern": [
+    " R ",
+    "CTC",
+    " R "
+  ],
+  "result": {
+    "id": "btgtech:basic_circuit"
+  }
+}

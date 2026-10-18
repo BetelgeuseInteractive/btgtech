@@ -51,7 +51,7 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0015](0015-standard-development-commands.md) | Standard development commands | Accepted |
 | [0016](0016-java-package-root.md) | Java package root | Accepted |
 | [0017](0017-single-gradle-project.md) | Single Gradle project | Accepted |
-| [0018](0018-feature-based-package-layout.md) | Feature-based package layout | Accepted |
+| [0018](0018-feature-based-package-layout.md) | Feature-based package layout | Accepted (amended by 0075) |
 | [0019](0019-repository-root-layout.md) | Repository root layout | Accepted (amended by 0067) |
 | [0020](0020-documentation-layout.md) | Documentation layout | Accepted |
 | [0021](0021-per-feature-registration.md) | Per-feature registration | Accepted |
@@ -108,3 +108,4 @@ What follows from the decision: obligations, limits, follow-up work.
 | [0072](0072-roadmap-and-work-packages.md) | Roadmap and work packages | Accepted |
 | [0073](0073-full-32-bit-menu-data-slots.md) | Full 32-bit menu data slots | Accepted |
 | [0074](0074-art-style.md) | Art style | Accepted |
+| [0075](0075-data-generation-may-use-client-classes.md) | Data generation may use client classes | Accepted |
