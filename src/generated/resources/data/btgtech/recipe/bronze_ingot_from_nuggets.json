@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bronze_ingot",
+  "key": {
+    "#": "#c:nuggets/bronze"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "btgtech:bronze_ingot"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "bronze_ingot",
+  "ingredients": [
+    "#c:storage_blocks/bronze"
+  ],
+  "result": {
+    "count": 9,
+    "id": "btgtech:bronze_ingot"
+  }
+}
