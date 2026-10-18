@@ -3,6 +3,7 @@ package com.betelgeuseinteractive.btgtech;
 import com.betelgeuseinteractive.btgtech.core.CoreFeature;
 import com.betelgeuseinteractive.btgtech.material.MaterialFeature;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 
 /**
@@ -14,8 +15,8 @@ import net.neoforged.fml.common.Mod;
 public final class BTGTech {
     public static final String MOD_ID = "btgtech";
 
-    public BTGTech(IEventBus modBus) {
-        CoreFeature.register(modBus);
+    public BTGTech(IEventBus modBus, ModContainer modContainer) {
+        CoreFeature.register(modBus, modContainer);
         MaterialFeature.register(modBus);
     }
 }
