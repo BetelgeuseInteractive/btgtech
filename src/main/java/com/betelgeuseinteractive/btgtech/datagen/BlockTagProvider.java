@@ -5,6 +5,7 @@ import com.betelgeuseinteractive.btgtech.core.CoreBlocks;
 import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -61,9 +62,10 @@ final class BlockTagProvider extends BlockTagsProvider {
     }
 
     private void addEnergy() {
-        EnergyBlocks.BATTERIES.values().forEach(battery -> {
-            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(battery.get());
-            tag(BlockTags.NEEDS_STONE_TOOL).add(battery.get());
-        });
+        Stream.concat(EnergyBlocks.SOLID_FUEL_GENERATORS.values().stream(), EnergyBlocks.BATTERIES.values().stream())
+                .forEach(block -> {
+                    tag(BlockTags.MINEABLE_WITH_PICKAXE).add(block.get());
+                    tag(BlockTags.NEEDS_STONE_TOOL).add(block.get());
+                });
     }
 }

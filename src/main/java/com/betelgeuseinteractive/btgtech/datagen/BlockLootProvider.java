@@ -48,6 +48,7 @@ final class BlockLootProvider extends BlockLootSubProvider {
 
     private void addEnergy() {
         // Machine-like blocks drop themselves; stored energy and settings reset (ADR 0052).
+        EnergyBlocks.SOLID_FUEL_GENERATORS.values().forEach(generator -> dropSelf(generator.get()));
         EnergyBlocks.BATTERIES.values().forEach(battery -> dropSelf(battery.get()));
     }
 }

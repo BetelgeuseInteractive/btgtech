@@ -14,6 +14,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -95,6 +96,18 @@ final class RecipeDefinitionProvider extends RecipeProvider {
 
     private void addEnergy() {
         // Basic only; the higher tiers follow with the tier upgrade recipes of WP-301.
+        shaped(
+                        RecipeCategory.REDSTONE,
+                        EnergyItems.SOLID_FUEL_GENERATORS.get(Tier.BASIC).get())
+                .define('C', Tags.Items.INGOTS_COPPER)
+                .define('F', Items.FURNACE)
+                .define('M', CoreItems.BASIC_MACHINE_CASING.get())
+                .define('K', CoreItems.BASIC_CIRCUIT.get())
+                .pattern("CFC")
+                .pattern("CMC")
+                .pattern("CKC")
+                .unlockedBy("has_basic_machine_casing", has(CoreItems.BASIC_MACHINE_CASING.get()))
+                .save(output);
         shaped(RecipeCategory.REDSTONE, EnergyItems.BATTERIES.get(Tier.BASIC).get())
                 .define('R', Tags.Items.DUSTS_REDSTONE)
                 .define('C', Tags.Items.INGOTS_COPPER)
