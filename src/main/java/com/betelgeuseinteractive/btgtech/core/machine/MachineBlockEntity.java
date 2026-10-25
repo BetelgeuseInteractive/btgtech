@@ -55,7 +55,11 @@ public abstract class MachineBlockEntity extends BlockEntity {
                         this::onEnergyChanged);
         this.items = definition.slotCount() == 0
                 ? null
-                : new MachineItemSlots(definition.inputSlots(), definition.outputSlots(), this::onSlotChanged);
+                : new MachineItemSlots(
+                        definition.inputSlots(),
+                        definition.outputSlots(),
+                        this::onSlotChanged,
+                        (slot, resource) -> block.acceptsInput(level, slot, resource));
         this.activeState.restore(state.getValue(MachineBlock.ACTIVE));
     }
 

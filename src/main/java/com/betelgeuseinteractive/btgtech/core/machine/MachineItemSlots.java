@@ -1,5 +1,6 @@
 package com.betelgeuseinteractive.btgtech.core.machine;
 
+import java.util.function.BiPredicate;
 import java.util.function.IntConsumer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.transfer.ResourceHandler;
@@ -14,17 +15,22 @@ import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 public final class MachineItemSlots extends ItemStacksResourceHandler {
     private final int inputSlots;
     private final IntConsumer onChange;
+    private final BiPredicate<Integer, ItemResource> acceptsInput;
     private final ResourceHandler<ItemResource> sidedView = new SidedView();
 
     /**
      * Creates empty slots.
      *
      * @param onChange called with the slot index after every change
+     * @param acceptsInput whether an input slot, by index, accepts a resource; output slots accept anything the
+     *     machine puts there
      */
-    public MachineItemSlots(int inputSlots, int outputSlots, IntConsumer onChange) {
+    public MachineItemSlots(
+            int inputSlots, int outputSlots, IntConsumer onChange, BiPredicate<Integer, ItemResource> acceptsInput) {
         super(inputSlots + outputSlots);
         this.inputSlots = inputSlots;
         this.onChange = onChange;
+        this.acceptsInput = acceptsInput;
     }
 
     /** Returns whether the slot at the index is an input slot. */
@@ -35,6 +41,11 @@ public final class MachineItemSlots extends ItemStacksResourceHandler {
     /** Returns the view for other blocks: insertion into input slots only, extraction from output slots only. */
     public ResourceHandler<ItemResource> sidedView() {
         return sidedView;
+    }
+
+    @Override
+    public boolean isValid(int index, ItemResource resource) {
+        return !isInput(index) || acceptsInput.test(index, resource);
     }
 
     @Override
