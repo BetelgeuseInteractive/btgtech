@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 class TierTest {
@@ -28,5 +29,11 @@ class TierTest {
                         List.of(0x4F2672, 0x8B48BA, 0xC69EEA)),
                 ramps,
                 "ADR 0074, decision 3");
+    }
+
+    @Test
+    void tiersAreFoundByTheirIds() {
+        assertEquals(Optional.of(Tier.ELITE), Tier.byId("elite"));
+        assertEquals(Optional.empty(), Tier.byId("legendary"));
     }
 }

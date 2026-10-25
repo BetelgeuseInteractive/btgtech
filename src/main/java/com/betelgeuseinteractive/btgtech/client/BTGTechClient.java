@@ -2,6 +2,7 @@ package com.betelgeuseinteractive.btgtech.client;
 
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.datagen.DataGenerators;
+import com.betelgeuseinteractive.btgtech.energy.client.EnergyClientFeature;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -16,6 +17,7 @@ import net.neoforged.fml.common.Mod;
 @Mod(value = BTGTech.MOD_ID, dist = Dist.CLIENT)
 public final class BTGTechClient {
     public BTGTechClient(IEventBus modBus) {
+        EnergyClientFeature.register(modBus);
         DataGenerators.register(modBus);
     }
 }

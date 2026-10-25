@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "Продвинутый аккумулятор",
+  "block.btgtech.basic_battery": "Базовый аккумулятор",
   "block.btgtech.basic_machine_casing": "Базовый корпус машины",
   "block.btgtech.bronze_block": "Бронзовый блок",
   "block.btgtech.deepslate_tin_ore": "Оловянная руда в глубинном сланце",
+  "block.btgtech.elite_battery": "Элитный аккумулятор",
   "block.btgtech.raw_tin_block": "Блок необработанного олова",
   "block.btgtech.tin_block": "Оловянный блок",
   "block.btgtech.tin_ore": "Оловянная руда",
+  "block.btgtech.ultimate_battery": "Совершенный аккумулятор",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "Кусочек олова",
   "item.btgtech.tin_plate": "Оловянная пластина",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "Теряет накопленную энергию при разрушении",
   "tooltip.btgtech.hold_shift": "Удерживайте Shift для подробностей"
 }

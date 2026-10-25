@@ -16,9 +16,9 @@ How BTG Tech produces models, loot, recipes, tags, world generation, advancement
 | Recipe provider | `RecipeDefinitionProvider` | Crafting, smelting and all BTG recipe types; ingredients are `c:` tags |
 | Tag providers | `BlockTagProvider`, `ItemTagProvider` | Block and item tags (`c:` and `minecraft:` tags); block item tags are copied from block tags |
 | Data map provider | (WP-203) | `btgtech:geothermal_fuels` |
-| Datapack built-in entries provider | `WorldGenerationEntries` | Configured features, placed features, biome modifiers; registered first, so that the other providers see these entries |
+| Datapack built-in entries provider | `WorldGenerationEntries`, `GameTestEntries` | Configured features, placed features, biome modifiers, game test instances; registered first in one set, so that the other providers see these entries |
 | Advancement provider | (WP-503) | Progression advancements |
-| Tier texture provider (BTG) | `TierTextureProvider` | Tier texture variants from base texture + tier mask (ADR 0048); each base texture names its tiers |
+| Tier texture provider (BTG) | `TierTextureProvider` | Tier texture variants from base texture + tier mask (ADR 0048); each base texture names its tiers; the hand-made animation metadata of a base texture is copied to every variant |
 | Sprite source provider | `RecoloredSpriteProvider` | Atlas sources that recolor vanilla textures and BTG templates at runtime for material forms (ADR 0074) |
 
 `MaterialTextures` names the recolored sprites for both the model and the sprite source provider, and `MaterialTags` holds the `c:` tag keys.
@@ -27,7 +27,7 @@ Writing PNG files from data generation was proven in WP-004 (ADR 0048): a provid
 
 ## 2. Hand-Made Resources
 
-Only: base textures and tier masks, `.mcmeta` animations, Blockbench model exports, palette strips for runtime recoloring (ADR 0074), and translation files other than `en_us` (in `src/main/resources/assets/btgtech/lang/`).
+Only: base textures and tier masks, `.mcmeta` animations, Blockbench model exports, palette strips for runtime recoloring (ADR 0074), the game test platform structure (ADR 0060), and translation files other than `en_us` (in `src/main/resources/assets/btgtech/lang/`).
 
 ## 3. Translations
 

@@ -2,14 +2,17 @@ package com.betelgeuseinteractive.btgtech.core;
 
 import com.betelgeuseinteractive.btgtech.core.network.TransportNetworks;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 /** Bootstrap of the shared infrastructure; the first feature that {@code BTGTech} registers. */
 public final class CoreFeature {
     private CoreFeature() {}
 
-    /** Registers the shared infrastructure on the mod and game event buses. */
-    public static void register(IEventBus modBus) {
+    /** Registers the balance config and the shared infrastructure on the mod and game event buses. */
+    public static void register(IEventBus modBus, ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.SERVER, BalanceConfig.SPEC);
         CoreCreativeModeTabs.register(modBus);
         CoreBlocks.register(modBus);
         CoreItems.register(modBus);

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "btgtech:battery_transfers_only_while_redstone_allows",
+  "max_ticks": 100,
+  "structure": "btgtech:game_test_platform"
+}

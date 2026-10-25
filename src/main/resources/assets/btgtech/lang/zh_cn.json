@@ -1,10 +1,14 @@
 {
+  "block.btgtech.advanced_battery": "高级电池",
+  "block.btgtech.basic_battery": "基础电池",
   "block.btgtech.basic_machine_casing": "基础机器外壳",
   "block.btgtech.bronze_block": "青铜块",
   "block.btgtech.deepslate_tin_ore": "深层锡矿石",
+  "block.btgtech.elite_battery": "精英电池",
   "block.btgtech.raw_tin_block": "粗锡块",
   "block.btgtech.tin_block": "锡块",
   "block.btgtech.tin_ore": "锡矿石",
+  "block.btgtech.ultimate_battery": "终极电池",
   "gui.btgtech.energy": "%s FE",
   "gui.btgtech.energy.giga": "%s GFE",
   "gui.btgtech.energy.kilo": "%s kFE",
@@ -24,5 +28,6 @@
   "item.btgtech.tin_nugget": "锡粒",
   "item.btgtech.tin_plate": "锡板",
   "itemGroup.btgtech.btgtech": "BTG Tech",
+  "tooltip.btgtech.battery_loses_energy": "破坏后会失去储存的能量",
   "tooltip.btgtech.hold_shift": "按住 Shift 查看详情"
 }

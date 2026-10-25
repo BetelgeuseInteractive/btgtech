@@ -2,6 +2,7 @@ package com.betelgeuseinteractive.btgtech.datagen;
 
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.CoreBlocks;
+import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialItems;
 import java.util.Set;
@@ -21,6 +22,7 @@ final class BlockLootProvider extends BlockLootSubProvider {
     protected void generate() {
         addCore();
         addMaterials();
+        addEnergy();
     }
 
     @Override
@@ -42,5 +44,10 @@ final class BlockLootProvider extends BlockLootSubProvider {
         dropSelf(MaterialBlocks.TIN_BLOCK.get());
         dropSelf(MaterialBlocks.RAW_TIN_BLOCK.get());
         dropSelf(MaterialBlocks.BRONZE_BLOCK.get());
+    }
+
+    private void addEnergy() {
+        // Machine-like blocks drop themselves; stored energy and settings reset (ADR 0052).
+        EnergyBlocks.BATTERIES.values().forEach(battery -> dropSelf(battery.get()));
     }
 }

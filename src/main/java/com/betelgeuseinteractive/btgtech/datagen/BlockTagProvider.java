@@ -2,6 +2,7 @@ package com.betelgeuseinteractive.btgtech.datagen;
 
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.CoreBlocks;
+import com.betelgeuseinteractive.btgtech.energy.EnergyBlocks;
 import com.betelgeuseinteractive.btgtech.material.MaterialBlocks;
 import java.util.concurrent.CompletableFuture;
 import net.minecraft.core.HolderLookup;
@@ -20,6 +21,7 @@ final class BlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider registries) {
         addCore();
         addMaterials();
+        addEnergy();
     }
 
     private void addCore() {
@@ -56,5 +58,12 @@ final class BlockTagProvider extends BlockTagsProvider {
                 .addTag(MaterialTags.TIN_STORAGE_BLOCKS_BLOCK)
                 .addTag(MaterialTags.RAW_TIN_STORAGE_BLOCKS_BLOCK)
                 .addTag(MaterialTags.BRONZE_STORAGE_BLOCKS_BLOCK);
+    }
+
+    private void addEnergy() {
+        EnergyBlocks.BATTERIES.values().forEach(battery -> {
+            tag(BlockTags.MINEABLE_WITH_PICKAXE).add(battery.get());
+            tag(BlockTags.NEEDS_STONE_TOOL).add(battery.get());
+        });
     }
 }

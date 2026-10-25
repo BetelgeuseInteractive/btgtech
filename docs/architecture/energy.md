@@ -43,7 +43,16 @@ Tiers limit throughput and capacity only (soft bottleneck). Mixing tiers never d
 - Cable block and energy transfer strategy: `energy`.
 - Cable rendering: `energy.client`.
 
-## 4. Extension Points
+## 4. Battery
+
+- Values from the `SERVER` config (`BalanceConfig`): capacity, and a transfer rate per direction equal to the cable throughput of its tier, so a lower-tier battery limits a higher-tier network softly (ADR 0027).
+- Passive: it never pushes energy (ADR 0041) and does not tick.
+- Transfers only while its redstone mode allows operation (ADR 0035); reading the stored energy always works.
+- Comparator output: 0 when empty, 15 when full, otherwise 1 plus the fill level scaled to 0–14, rounded down (`energy.logic.ComparatorSignal`).
+- The front is active while energy flows and for 20 ticks after the last transfer (ADR 0047); a scheduled block tick ends the active state, so the battery needs no ticker.
+- Broken, it drops itself and loses its energy (ADR 0052); its item tooltip says so.
+
+## 5. Extension Points
 
 - New energy sources: new generator blocks built on the machine framework; the network needs no changes.
 - New dimensions (space technology): networks are per level, so they work in any dimension without changes.

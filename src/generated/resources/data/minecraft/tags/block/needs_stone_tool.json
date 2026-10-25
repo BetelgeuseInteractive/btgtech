@@ -5,6 +5,10 @@
     "btgtech:deepslate_tin_ore",
     "btgtech:tin_block",
     "btgtech:raw_tin_block",
-    "btgtech:bronze_block"
+    "btgtech:bronze_block",
+    "btgtech:basic_battery",
+    "btgtech:advanced_battery",
+    "btgtech:elite_battery",
+    "btgtech:ultimate_battery"
   ]
 }

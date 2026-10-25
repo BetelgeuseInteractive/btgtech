@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "btgtech:block/elite_battery_front",
+    "side": "btgtech:block/elite_battery_side",
+    "top": "btgtech:block/elite_battery_top"
+  }
+}

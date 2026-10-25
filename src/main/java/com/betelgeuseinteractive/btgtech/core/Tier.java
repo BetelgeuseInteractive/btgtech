@@ -1,5 +1,7 @@
 package com.betelgeuseinteractive.btgtech.core;
 
+import java.util.Optional;
+
 /** The four machine tiers in progression order (ADR 0033). The set is closed (ADR 0069). */
 public enum Tier {
     BASIC("basic", 0x4F555B, 0x7A828A, 0xA9B0B7),
@@ -40,5 +42,15 @@ public enum Tier {
     /** Returns the light tone of the tier color ramp as {@code 0xRRGGBB} (ADR 0074). */
     public int lightColor() {
         return lightColor;
+    }
+
+    /** Returns the tier with the given identifier, if there is one. */
+    public static Optional<Tier> byId(String id) {
+        for (Tier tier : values()) {
+            if (tier.id.equals(id)) {
+                return Optional.of(tier);
+            }
+        }
+        return Optional.empty();
     }
 }

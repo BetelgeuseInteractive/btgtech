@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "btgtech:battery_comparator_follows_fill_level",
+  "max_ticks": 100,
+  "structure": "btgtech:game_test_platform"
+}

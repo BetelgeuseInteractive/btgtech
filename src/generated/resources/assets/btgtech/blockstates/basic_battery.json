@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "active=false,facing=east": {
+      "model": "btgtech:block/basic_battery",
+      "y": 90
+    },
+    "active=false,facing=north": {
+      "model": "btgtech:block/basic_battery"
+    },
+    "active=false,facing=south": {
+      "model": "btgtech:block/basic_battery",
+      "y": 180
+    },
+    "active=false,facing=west": {
+      "model": "btgtech:block/basic_battery",
+      "y": 270
+    },
+    "active=true,facing=east": {
+      "model": "btgtech:block/basic_battery_active",
+      "y": 90
+    },
+    "active=true,facing=north": {
+      "model": "btgtech:block/basic_battery_active"
+    },
+    "active=true,facing=south": {
+      "model": "btgtech:block/basic_battery_active",
+      "y": 180
+    },
+    "active=true,facing=west": {
+      "model": "btgtech:block/basic_battery_active",
+      "y": 270
+    }
+  }
+}
