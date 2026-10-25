@@ -92,6 +92,7 @@ final class ModelDefinitionProvider extends ModelProvider {
     }
 
     private static void addEnergy(BlockModelGenerators blockModels) {
+        EnergyBlocks.SOLID_FUEL_GENERATORS.values().forEach(generator -> machineBlock(blockModels, generator.get()));
         EnergyBlocks.BATTERIES.values().forEach(battery -> machineBlock(blockModels, battery.get()));
     }
 

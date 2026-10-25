@@ -63,6 +63,10 @@ final class EnglishLanguageProvider extends LanguageProvider {
     }
 
     private void addEnergy() {
+        addBlock(EnergyBlocks.SOLID_FUEL_GENERATORS.get(Tier.BASIC), "Basic Solid Fuel Generator");
+        addBlock(EnergyBlocks.SOLID_FUEL_GENERATORS.get(Tier.ADVANCED), "Advanced Solid Fuel Generator");
+        addBlock(EnergyBlocks.SOLID_FUEL_GENERATORS.get(Tier.ELITE), "Elite Solid Fuel Generator");
+        addBlock(EnergyBlocks.SOLID_FUEL_GENERATORS.get(Tier.ULTIMATE), "Ultimate Solid Fuel Generator");
         addBlock(EnergyBlocks.BATTERIES.get(Tier.BASIC), "Basic Battery");
         addBlock(EnergyBlocks.BATTERIES.get(Tier.ADVANCED), "Advanced Battery");
         addBlock(EnergyBlocks.BATTERIES.get(Tier.ELITE), "Elite Battery");

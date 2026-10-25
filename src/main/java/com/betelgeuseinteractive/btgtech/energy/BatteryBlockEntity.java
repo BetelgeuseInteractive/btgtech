@@ -31,7 +31,7 @@ public final class BatteryBlockEntity extends MachineBlockEntity implements Menu
 
     public BatteryBlockEntity(BlockPos pos, BlockState state) {
         super(EnergyBlockEntityTypes.BATTERY.get(), pos, state);
-        this.redstoneControlledEnergy = new RedstoneControlledEnergy(storage());
+        this.redstoneControlledEnergy = new RedstoneControlledEnergy(requireEnergy());
     }
 
     @Override
@@ -41,7 +41,7 @@ public final class BatteryBlockEntity extends MachineBlockEntity implements Menu
 
     /** Returns the comparator output, proportional to the fill level. */
     public int comparatorSignal() {
-        MachineEnergyStorage energy = storage();
+        MachineEnergyStorage energy = requireEnergy();
         return ComparatorSignal.of(energy.stored(), energy.capacity());
     }
 
@@ -85,14 +85,6 @@ public final class BatteryBlockEntity extends MachineBlockEntity implements Menu
                 .hasScheduledTick(worldPosition, getBlockState().getBlock())) {
             level.scheduleTick(worldPosition, getBlockState().getBlock(), ACTIVE_TIMEOUT);
         }
-    }
-
-    private MachineEnergyStorage storage() {
-        MachineEnergyStorage energy = energy();
-        if (energy == null) {
-            throw new IllegalStateException("A battery always has an energy storage");
-        }
-        return energy;
     }
 
     // Transfers only while the redstone mode allows operation; reading the stored energy is always possible.

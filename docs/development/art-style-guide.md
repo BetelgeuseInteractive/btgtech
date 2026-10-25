@@ -79,6 +79,7 @@ Machine faces: a beveled iron frame (lightest tone on the top row and left colum
 - Gauges sit in a recess like a slot: `#373737` top and left edge, `#FFFFFF` bottom and right edge, `#8B8B8B` inside.
 - Energy fill in redstone red, light from the left (`#5A0808` `#7A0E0E` `#A51616` `#D42020` `#E8453A` `#FF7A66`), with one darker row every 4 px counted from the bottom.
 - Progress arrow: empty in `#8B8B8B`, filled in `#FFFFFF`, symmetric about its middle row.
+- Fuel flame (14 × 14 px): a symmetric flame, empty in `#8B8B8B`, burning with a `#C23A12` edge, `#FF8A1F` body and `#FFD84A` core; it shrinks from the top as the fuel is used up.
 - Icons (10 × 10 px) are drawn in the colors of what they show and stay readable on the vanilla button: redstone dust for "ignore", a lit and an unlit redstone torch for the two signal modes.
 - Layout and widgets: [gui.md](../architecture/gui.md).
 

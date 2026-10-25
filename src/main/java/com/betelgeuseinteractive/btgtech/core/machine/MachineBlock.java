@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -64,6 +65,16 @@ public abstract class MachineBlock extends BaseEntityBlock {
 
     /** Returns the block entity type of this block. */
     protected abstract BlockEntityType<? extends MachineBlockEntity> blockEntityType();
+
+    /**
+     * Returns whether the input slot with the given index accepts the resource, for example only fuel in a generator's
+     * fuel slot; it applies to players, other blocks and the machine alike. Accepts everything by default.
+     *
+     * @param level the level of the machine, or {@code null} while it has none, when everything is accepted
+     */
+    public boolean acceptsInput(@Nullable Level level, int slot, ItemResource resource) {
+        return true;
+    }
 
     /** Returns whether the block entity ticks on the server; passive blocks such as batteries return {@code false}. */
     protected boolean ticksOnServer() {

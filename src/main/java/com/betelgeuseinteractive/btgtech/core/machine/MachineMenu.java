@@ -73,7 +73,11 @@ public abstract class MachineMenu extends AbstractContainerMenu {
         this.access = ContainerLevelAccess.create(level, pos);
         this.items = definition.slotCount() == 0
                 ? null
-                : new MachineItemSlots(definition.inputSlots(), definition.outputSlots(), index -> {});
+                : new MachineItemSlots(
+                        definition.inputSlots(),
+                        definition.outputSlots(),
+                        index -> {},
+                        (slot, resource) -> machineBlock.acceptsInput(level, slot, resource));
         this.data = new SimpleContainerData(DATA_SIZE);
         addDataSlots(data);
     }

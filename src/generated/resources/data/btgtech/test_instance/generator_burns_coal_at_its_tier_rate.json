@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "btgtech:generator_burns_coal_at_its_tier_rate",
+  "max_ticks": 100,
+  "structure": "btgtech:game_test_platform"
+}

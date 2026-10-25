@@ -14,6 +14,7 @@ public final class EnergyClientFeature {
     }
 
     private static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(EnergyMenuTypes.SOLID_FUEL_GENERATOR.get(), SolidFuelGeneratorScreen::new);
         event.register(EnergyMenuTypes.BATTERY.get(), BatteryScreen::new);
     }
 }

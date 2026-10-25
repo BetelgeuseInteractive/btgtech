@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:function",
+  "environment": "minecraft:default",
+  "function": "btgtech:generator_refuses_non_fuel",
+  "max_ticks": 100,
+  "structure": "btgtech:game_test_platform"
+}

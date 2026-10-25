@@ -55,7 +55,11 @@ public abstract class MachineBlockEntity extends BlockEntity {
                         this::onEnergyChanged);
         this.items = definition.slotCount() == 0
                 ? null
-                : new MachineItemSlots(definition.inputSlots(), definition.outputSlots(), this::onSlotChanged);
+                : new MachineItemSlots(
+                        definition.inputSlots(),
+                        definition.outputSlots(),
+                        this::onSlotChanged,
+                        (slot, resource) -> block.acceptsInput(level, slot, resource));
         this.activeState.restore(state.getValue(MachineBlock.ACTIVE));
     }
 
@@ -83,6 +87,30 @@ public abstract class MachineBlockEntity extends BlockEntity {
     /** Returns the energy storage, or {@code null} if the block has no energy. */
     public @Nullable MachineEnergyStorage energy() {
         return energy;
+    }
+
+    /**
+     * Returns the energy storage of a block whose definition always has one.
+     *
+     * @throws IllegalStateException if the block has no energy
+     */
+    protected MachineEnergyStorage requireEnergy() {
+        if (energy == null) {
+            throw new IllegalStateException("A " + getBlockState() + " has no energy storage");
+        }
+        return energy;
+    }
+
+    /**
+     * Returns the item slots of a block whose definition always has some.
+     *
+     * @throws IllegalStateException if the block has no slots
+     */
+    protected MachineItemSlots requireItems() {
+        if (items == null) {
+            throw new IllegalStateException("A " + getBlockState() + " has no item slots");
+        }
+        return items;
     }
 
     /** Returns the item slots with full access, or {@code null} if the block has no slots. */

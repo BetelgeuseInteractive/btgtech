@@ -2,6 +2,7 @@ package com.betelgeuseinteractive.btgtech.energy;
 
 import com.betelgeuseinteractive.btgtech.BTGTech;
 import com.betelgeuseinteractive.btgtech.core.Tier;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
@@ -23,6 +24,8 @@ public final class EnergyItems {
 
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(BTGTech.MOD_ID);
 
+    /** The solid fuel generator items by tier. */
+    public static final Map<Tier, DeferredItem<BlockItem>> SOLID_FUEL_GENERATORS = registerGenerators();
     /** The battery items by tier. */
     public static final Map<Tier, DeferredItem<BlockItem>> BATTERIES = registerBatteries();
 
@@ -35,7 +38,17 @@ public final class EnergyItems {
 
     /** Returns the items in creative tab order: each block type ordered by tier. */
     static List<DeferredItem<? extends Item>> creativeTabOrder() {
-        return List.copyOf(BATTERIES.values());
+        List<DeferredItem<? extends Item>> items = new ArrayList<>(SOLID_FUEL_GENERATORS.values());
+        items.addAll(BATTERIES.values());
+        return List.copyOf(items);
+    }
+
+    private static Map<Tier, DeferredItem<BlockItem>> registerGenerators() {
+        Map<Tier, DeferredItem<BlockItem>> generators = new EnumMap<>(Tier.class);
+        for (Tier tier : Tier.values()) {
+            generators.put(tier, ITEMS.registerSimpleBlockItem(EnergyBlocks.SOLID_FUEL_GENERATORS.get(tier)));
+        }
+        return Collections.unmodifiableMap(generators);
     }
 
     private static Map<Tier, DeferredItem<BlockItem>> registerBatteries() {

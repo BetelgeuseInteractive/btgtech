@@ -36,6 +36,10 @@ final class TierTextureProvider implements DataProvider {
             new BaseTexture("block/machine_casing", EnumSet.of(Tier.BASIC)),
             new BaseTexture("item/circuit", EnumSet.of(Tier.BASIC)),
             // Energy
+            new BaseTexture("block/solid_fuel_generator_front", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/solid_fuel_generator_front_active", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/solid_fuel_generator_side", EnumSet.allOf(Tier.class)),
+            new BaseTexture("block/solid_fuel_generator_top", EnumSet.allOf(Tier.class)),
             new BaseTexture("block/battery_front", EnumSet.allOf(Tier.class)),
             new BaseTexture("block/battery_front_active", EnumSet.allOf(Tier.class)),
             new BaseTexture("block/battery_side", EnumSet.allOf(Tier.class)),

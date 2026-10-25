@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": "#c:ingots/copper",
+    "F": "minecraft:furnace",
+    "K": "btgtech:basic_circuit",
+    "M": "btgtech:basic_machine_casing"
+  },
+  "pattern": [
+    "CFC",
+    "CMC",
+    "CKC"
+  ],
+  "result": {
+    "id": "btgtech:basic_solid_fuel_generator"
+  }
+}
