@@ -16,6 +16,7 @@ Design of all machine-like blocks: processing machines, generators, batteries, i
 | Recipe base | Shared recipe classes and codecs for all BTG recipe types (WP-106) |
 
 Rules for machine code:
+- `MachineBlock.acceptsInput` decides which resources an input slot accepts (for example fuel only); the slots apply it for players, other blocks and the client-side menu alike.
 - The block itself produces and uses energy with `generate` and `consume`, which ignore the transfer limits; other blocks go through the energy handler and its tier limits.
 - Other blocks see the item slots through the sided view: insertion into inputs only, extraction from outputs only.
 - A processing machine calls `consumeInputChange()` before looking up a recipe and stays idle while it returns `false` (idle sleep).

@@ -17,6 +17,8 @@ Applies to `electric_furnace`, `crusher`, `compressor`, `alloy_smelter`, `fluid_
 | | Basic | Advanced | Elite | Ultimate | Notes |
 |---|---|---|---|---|---|
 | `solid_fuel_generator` output | 40 FE/t | 160 FE/t | 640 FE/t | 2,560 FE/t | Energy per fuel = burn time × 40 FE (coal: 64,000 FE) on every tier; higher tiers burn faster |
+| `solid_fuel_generator` buffer | 10,000 FE | 40,000 FE | 160,000 FE | 640,000 FE | 250 ticks of output; burning stops while full |
+| `solid_fuel_generator` extraction | 1,000 FE/t | 4,000 FE/t | 16,000 FE/t | 64,000 FE/t | The cable throughput of its tier; nothing can be inserted |
 | `solar_panel` output (day, clear sky) | 4 FE/t | 16 FE/t | 64 FE/t | 256 FE/t | Rain: 50 %; night: 0 |
 | `geothermal_generator` output | 80 FE/t | 320 FE/t | 1,280 FE/t | 5,120 FE/t | Lava: 200,000 FE per 1,000 mB (data map `btgtech:geothermal_fuels`) |
 | `geothermal_generator` tank | 4,000 mB | 16,000 mB | 64,000 mB | 256,000 mB | |
@@ -60,6 +62,7 @@ Recipes use `c:` tags. These are needed before the alloy smelter and the Basic m
 | 4 `bronze_ingot` | Shapeless: 3 copper ingots + 1 tin ingot (ADR 0038 ratio) |
 | `basic_machine_casing` | Iron ingots in the corners, bronze ingots on the edges, center empty |
 | `basic_circuit` | Tin ingot in the center, copper ingots left and right, redstone above and below |
+| `basic_solid_fuel_generator` | Basic machine casing in the center, furnace above it, Basic circuit below it, copper ingots on both sides; the higher tiers follow with the tier upgrade recipes (WP-301) |
 | `basic_battery` | Basic machine casing in the center, Basic circuit below it, copper ingots on the other edges, redstone in the corners; the higher tiers follow with the tier upgrade recipes (WP-301) |
 
 ## 7. Change Log
@@ -69,3 +72,4 @@ Recipes use `c:` tags. These are needed before the alloy smelter and the Basic m
 | 2026-10-11 | Initial defaults (ADR 0043) | Owner |
 | 2026-10-18 | Bronze, Basic casing and Basic circuit recipes; no experience from smelting dust (WP-104) | Owner |
 | 2026-10-18 | Battery transfer rate equal to the cable throughput of its tier; Basic battery recipe (WP-105) | Owner |
+| 2026-10-25 | Solid fuel generator buffer (250 ticks of output) and extraction (cable throughput of its tier); Basic generator recipe (WP-110) | Owner |

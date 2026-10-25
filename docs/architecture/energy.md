@@ -43,7 +43,15 @@ Tiers limit throughput and capacity only (soft bottleneck). Mixing tiers never d
 - Cable block and energy transfer strategy: `energy`.
 - Cable rendering: `energy.client`.
 
-## 4. Battery
+## 4. Solid Fuel Generator
+
+- Burns items with a burn time in the `neoforge:furnace_fuels` data map, one at a time, from its single fuel slot, which accepts fuel only; a lava bucket leaves its empty bucket in the slot.
+- A fuel holds its burn time times the energy per burn tick (40 FE) on every tier; each tick releases at most the tier's output (`energy.logic.FuelBurner`), so higher tiers burn the same fuel faster, never more efficiently (ADR 0043).
+- Burns only while its buffer has room and its redstone mode allows operation; fuel is never wasted.
+- Other blocks may extract up to the cable throughput of its tier; nothing can be inserted. It does not push yet (WP-204).
+- The front is active while it produces energy (ADR 0047). The screen shows the fuel slot, a flame for the remaining fuel and the energy bar.
+
+## 5. Battery
 
 - Values from the `SERVER` config (`BalanceConfig`): capacity, and a transfer rate per direction equal to the cable throughput of its tier, so a lower-tier battery limits a higher-tier network softly (ADR 0027).
 - Passive: it never pushes energy (ADR 0041) and does not tick.
@@ -52,7 +60,7 @@ Tiers limit throughput and capacity only (soft bottleneck). Mixing tiers never d
 - The front is active while energy flows and for 20 ticks after the last transfer (ADR 0047); a scheduled block tick ends the active state, so the battery needs no ticker.
 - Broken, it drops itself and loses its energy (ADR 0052); its item tooltip says so.
 
-## 5. Extension Points
+## 6. Extension Points
 
 - New energy sources: new generator blocks built on the machine framework; the network needs no changes.
 - New dimensions (space technology): networks are per level, so they work in any dimension without changes.
