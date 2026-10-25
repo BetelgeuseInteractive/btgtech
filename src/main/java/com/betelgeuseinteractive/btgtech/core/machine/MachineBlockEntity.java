@@ -89,6 +89,30 @@ public abstract class MachineBlockEntity extends BlockEntity {
         return energy;
     }
 
+    /**
+     * Returns the energy storage of a block whose definition always has one.
+     *
+     * @throws IllegalStateException if the block has no energy
+     */
+    protected MachineEnergyStorage requireEnergy() {
+        if (energy == null) {
+            throw new IllegalStateException("A " + getBlockState() + " has no energy storage");
+        }
+        return energy;
+    }
+
+    /**
+     * Returns the item slots of a block whose definition always has some.
+     *
+     * @throws IllegalStateException if the block has no slots
+     */
+    protected MachineItemSlots requireItems() {
+        if (items == null) {
+            throw new IllegalStateException("A " + getBlockState() + " has no item slots");
+        }
+        return items;
+    }
+
     /** Returns the item slots with full access, or {@code null} if the block has no slots. */
     public @Nullable MachineItemSlots items() {
         return items;

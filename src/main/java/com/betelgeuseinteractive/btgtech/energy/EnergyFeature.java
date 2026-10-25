@@ -6,7 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
-/** Bootstrap of the energy feature: batteries, later generators and cables (ADR 0018). */
+/** Bootstrap of the energy feature: generators, batteries, later cables (ADR 0018). */
 public final class EnergyFeature {
     private EnergyFeature() {}
 
@@ -22,6 +22,7 @@ public final class EnergyFeature {
     }
 
     private static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        MachineCapabilities.register(event, EnergyBlockEntityTypes.SOLID_FUEL_GENERATOR.get());
         MachineCapabilities.register(event, EnergyBlockEntityTypes.BATTERY.get());
     }
 

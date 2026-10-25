@@ -17,6 +17,11 @@ public final class EnergyBlockEntityTypes {
     private static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, BTGTech.MOD_ID);
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SolidFuelGeneratorBlockEntity>>
+            SOLID_FUEL_GENERATOR = BLOCK_ENTITY_TYPES.register(
+                    "solid_fuel_generator",
+                    () -> new BlockEntityType<>(
+                            SolidFuelGeneratorBlockEntity::new, blocks(EnergyBlocks.SOLID_FUEL_GENERATORS.values())));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BatteryBlockEntity>> BATTERY =
             BLOCK_ENTITY_TYPES.register(
                     "battery",
